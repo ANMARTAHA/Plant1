@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
 <title>Study Smart — Biosynthetic Pathways</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -24,11 +25,11 @@
   --shadow:0 1px 0 rgba(32,38,28,.06), 0 8px 24px rgba(32,38,28,.06);
 }
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;color-scheme:light;}
 body{
   margin:0;
-  background:var(--paper);
-  color:var(--ink);
+  background:var(--paper) !important;
+  color:var(--ink) !important;
   font-family:'Inter',sans-serif;
   line-height:1.55;
 }
@@ -381,10 +382,51 @@ section.panel.active{display:block;animation:fadeIn .35s ease;}
 
 footer.site{
   border-top:1px solid var(--line);
-  padding:26px 0 40px 0;
+  padding:22px 0 34px 0;
   text-align:center;
 }
 footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
+.credit-line{
+  display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center;align-items:center;
+  font-size:12px;color:#8a8a78;
+}
+.credit-line b{color:inherit;font-weight:600;}
+.credit-line a{color:var(--gold);text-decoration:none;font-weight:600;}
+.credit-line a:hover{text-decoration:underline;}
+.credit-bar{
+  background:rgba(0,0,0,.16);
+  padding:7px 0;
+}
+.credit-bar .wrap{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;align-items:center;}
+.credit-bar span{font-size:11.5px;font-family:'JetBrains Mono',monospace;color:var(--gold-soft);}
+.credit-bar span b{color:#fff;}
+
+/* ---------- TOPICS ---------- */
+.topic-block{margin-bottom:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow);}
+.topic-block h3{font-size:16.5px;margin-bottom:8px;display:flex;align-items:center;gap:9px;}
+.topic-num{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:#fff;background:var(--forest-2);
+  width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.topic-block ul{margin:0;padding-left:20px;font-size:13.5px;color:#3c3b32;}
+.topic-block li{margin-bottom:5px;}
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:6px;}
+.gloss-card{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+.gloss-card .term{font-weight:700;color:var(--forest);font-size:13.5px;margin-bottom:3px;display:block;}
+.gloss-card .def{font-size:12.5px;color:#4a4938;}
+
+/* ---------- HIGH YIELD ---------- */
+.hy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
+.hy-card{
+  background:var(--card);border:1px solid var(--gold-soft);border-left:4px solid var(--gold);
+  border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);position:relative;
+}
+.hy-badge{
+  position:absolute;top:-10px;right:14px;background:var(--gold);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border-radius:999px;letter-spacing:.03em;
+}
+.hy-card p{font-size:13.5px;color:#332f22;margin:0;}
+.hy-card p strong{color:var(--forest-2);}
 
 @media(max-width:600px){
   .wrap{padding:0 18px;}
@@ -394,6 +436,14 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
 </style>
 </head>
 <body>
+
+<div class="credit-bar">
+  <div class="wrap">
+    <span>© <b>Anmar Taha</b> — All rights reserved</span>
+    <span>Telegram: <b>@AnmarTaha</b></span>
+    <span>Instagram: <b>a.za18</b></span>
+  </div>
+</div>
 
 <header class="top">
   <div class="wrap">
@@ -419,6 +469,8 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
     <button class="tab-btn" data-target="mapview"><span class="num">03</span>Mini Map</button>
     <button class="tab-btn" data-target="flashcards"><span class="num">04</span>Flash Cards</button>
     <button class="tab-btn" data-target="quiz"><span class="num">05</span>Quiz Bank</button>
+    <button class="tab-btn" data-target="topics"><span class="num">06</span>Topics</button>
+    <button class="tab-btn" data-target="highyield"><span class="num">07</span>High Yield</button>
   </div>
 </nav>
 
@@ -642,10 +694,130 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
     <div id="quizList"></div>
   </section>
 
+  <!-- ===================== 6. TOPICS ===================== -->
+  <section id="topics" class="panel">
+    <div class="panel-head">
+      <h2>Topics</h2>
+      <p>The lecture broken into main topics and subtopics, plus a glossary of every key term you need to know.</p>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">1</span>Primary vs. Secondary Metabolites</h3>
+      <ul>
+        <li>Definitions and role of each type</li>
+        <li>Molecular weight, quantity produced, essentiality to the plant</li>
+        <li>Species-specific vs. universal distribution</li>
+      </ul>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">2</span>Classes of Secondary Metabolites</h3>
+      <ul>
+        <li>Alkaloids, Flavonoids, Glycosides, Saponins, Tannins</li>
+        <li>Representative drugs: Digoxin, Caffeine, Ephedrine, Coniine, Morphine, Vincristine, Hydroxychloroquine</li>
+      </ul>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">3</span>Structural Classification</h3>
+      <ul>
+        <li>Aromatic secondary metabolites (e.g., Morphine, Hydroxychloroquine)</li>
+        <li>Aliphatic / non-aromatic secondary metabolites (e.g., Digoxin, Coniine)</li>
+        <li>Biosynthesis of secondary compounds always starts from primary metabolites</li>
+      </ul>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">4</span>Overview of Biosynthetic Pathways</h3>
+      <ul>
+        <li>Shikimic acid pathway → aromatic active compounds</li>
+        <li>Acetate–mevalonic acid pathway → aliphatic (nonaromatic) active compounds</li>
+        <li>Mixed pathway: derived from both shikimate and mevalonate routes</li>
+      </ul>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">5</span>Shikimic Acid Pathway</h3>
+      <ul>
+        <li>Origin of the name (Japanese flower Shikimi, isolated 1885)</li>
+        <li>Present in plants, fungi, bacteria — absent in animals</li>
+        <li>Starting materials: PEP (glycolysis) + erythrose-4-phosphate (pentose phosphate pathway)</li>
+        <li>Sequence: 2-keto-3-deoxy-7-phospho-D-glucoheptonic acid → 3-dehydroquinic acid → 3-dehydroshikimic acid → shikimic acid → shikimic acid-3-phosphate → chorismic acid</li>
+        <li>Chorismic acid branch point: anthranilic acid → tryptophan; prephenic acid → phenylalanine and tyrosine</li>
+        <li>Importance: precursor of aromatic amino acids, tannins, flavonoids, coumarins, alkaloids</li>
+      </ul>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">6</span>Acetate–Mevalonate Pathway (Isoprenoid Biosynthesis)</h3>
+      <ul>
+        <li>Starting material: Acetyl-CoA (from glucose)</li>
+        <li>Sequence: Acetyl-CoA → acetoacetyl-CoA → HMG-CoA → mevalonic acid → IPP ⇌ DMAP</li>
+        <li>Terpene chain-length ladder: GPP (C10, monoterpenes) → FPP (C15, sesquiterpenes) → GGPP (C20, diterpenes); 2×FPP → squalene (C30, steroids/triterpenoids)</li>
+        <li>Builds aliphatic actives: terpenoids and steroids</li>
+      </ul>
+    </div>
+
+    <div class="topic-block">
+      <h3><span class="topic-num">7</span>Clinical Correlations</h3>
+      <ul>
+        <li>Statins inhibit HMG-CoA reductase, blocking cholesterol formation upstream of mevalonate</li>
+        <li>Natural-product drugs: Digoxin, Vincristine, Hydroxychloroquine, Buscopan, Cafergot, MEBO</li>
+      </ul>
+    </div>
+
+    <div class="topic-block wide">
+      <h3><span class="topic-num">✓</span>Glossary of Defined Terms</h3>
+      <div class="glossary-grid">
+        <div class="gloss-card"><span class="term">Secondary metabolite</span><span class="def">Low-MW compound made in small amounts, species-specific, not essential for basic growth but pharmacologically active.</span></div>
+        <div class="gloss-card"><span class="term">Primary metabolite</span><span class="def">High-MW macromolecule (protein, polysaccharide, vitamin) essential for growth, development, reproduction; same across all plants.</span></div>
+        <div class="gloss-card"><span class="term">Glycoside</span><span class="def">One of the 5 classes of secondary metabolites; e.g., Digoxin.</span></div>
+        <div class="gloss-card"><span class="term">Isoprenoid / isoprene unit</span><span class="def">The C5 building block (from IPP) used to construct terpenoids and steroids.</span></div>
+        <div class="gloss-card"><span class="term">Shikimic acid</span><span class="def">Key aromatic-pathway intermediate; first isolated from the Japanese flower Shikimi in 1885.</span></div>
+        <div class="gloss-card"><span class="term">Chorismic acid</span><span class="def">The central branch-point intermediate of the shikimate pathway, leading to Trp on one side and Phe/Tyr on the other.</span></div>
+        <div class="gloss-card"><span class="term">Prephenic acid</span><span class="def">Last nonaromatic intermediate in the shikimate pathway, aromatized into phenylalanine or tyrosine precursors.</span></div>
+        <div class="gloss-card"><span class="term">Anthranilic acid</span><span class="def">Intermediate on the branch from chorismic acid leading to tryptophan.</span></div>
+        <div class="gloss-card"><span class="term">HMG-CoA</span><span class="def">(3S)-3-Hydroxy-3-methylglutaryl-CoA; reduced by HMG-CoA reductase to mevalonic acid — the statin drug target.</span></div>
+        <div class="gloss-card"><span class="term">Mevalonic acid</span><span class="def">Product of HMG-CoA reduction; phosphorylated and decarboxylated to form IPP.</span></div>
+        <div class="gloss-card"><span class="term">IPP</span><span class="def">Isopentenyl pyrophosphate (C5); the isoprene unit and universal precursor of terpenoids/steroids.</span></div>
+        <div class="gloss-card"><span class="term">DMAP</span><span class="def">Dimethylallyl pyrophosphate; the reactive isomer of IPP with a good leaving group.</span></div>
+        <div class="gloss-card"><span class="term">Squalene</span><span class="def">C30 terpene formed from 2 farnesyl pyrophosphate; direct precursor of cholesterol and other steroids/triterpenoids.</span></div>
+        <div class="gloss-card"><span class="term">Terpenoid</span><span class="def">Aliphatic secondary metabolite built from isoprene units via the acetate–mevalonate pathway.</span></div>
+        <div class="gloss-card"><span class="term">Statin</span><span class="def">Antilipidemic drug class that inhibits HMG-CoA reductase to block cholesterol biosynthesis.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. HIGH YIELD ===================== -->
+  <section id="highyield" class="panel">
+    <div class="panel-head">
+      <h2>High Yield</h2>
+      <p>The facts most likely to appear on an exam — read this the night before.</p>
+    </div>
+    <div class="hy-grid">
+      <div class="hy-card"><span class="hy-badge">HY 1</span><p><strong>Shikimate → aromatic</strong>; <strong>Acetate–mevalonate → aliphatic</strong>. Never mix these up.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 2</span><p>Animals <strong>cannot</strong> run the shikimate pathway, so <strong>phenylalanine, tyrosine, tryptophan</strong> are essential dietary amino acids.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 3</span><p><strong>Chorismic acid</strong> is the key branch point: one route → anthranilic acid → Tryptophan; the other → prephenic acid → Phe/Tyr.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 4</span><p><strong>Prephenic acid</strong> is the last nonaromatic compound before aromatization into Phe or Tyr.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 5</span><p><strong>Statins</strong> inhibit <strong>HMG-CoA reductase</strong>, blocking cholesterol synthesis upstream of mevalonate, IPP, squalene.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 6</span><p><strong>IPP</strong> (C5) is the universal isoprene unit; it interconverts with its isomer <strong>DMAP</strong>.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 7</span><p>Isoprene-unit count: Monoterpene = 2, Sesquiterpene = 3, Diterpene = 4, Triterpene/steroid (2×FPP) = 6.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 8</span><p>Shikimic acid was first isolated in <strong>1885</strong> from the Japanese flower <strong>Shikimi</strong>.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 9</span><p><strong>Squalene (C30)</strong> = 2 × Farnesyl-PP; it is the direct precursor of cholesterol and other steroids/triterpenoids.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 10</span><p>A <strong>mixed pathway</strong> exists — some secondary metabolites draw on both shikimate and mevalonate routes.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 11</span><p><strong>Digoxin</strong> is aliphatic, a glycoside, and a cardiac drug — it can appear correct in multiple classification questions at once.</p></div>
+      <div class="hy-card"><span class="hy-badge">HY 12</span><p>Secondary metabolite biosynthesis <strong>always starts from primary metabolites</strong> (carbohydrates → glycolysis/pentose phosphate pathway).</p></div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site">
-  <p>© Anmar Taha. All rights reserved.</p>
+  <div class="credit-line">
+    <span><b>© Anmar Taha.</b> All rights reserved.</span>
+    <a href="https://t.me/AnmarTaha" target="_blank" rel="noopener">Telegram: @AnmarTaha</a>
+    <a href="https://instagram.com/a.za18" target="_blank" rel="noopener">Instagram: a.za18</a>
+  </div>
 </footer>
 
 <script>
