@@ -167,6 +167,17 @@ section.panel.active{display:block;animation:fadeIn .35s ease;}
   border-radius:999px;padding:5px 12px;font-size:12.5px;color:var(--forest-2);font-weight:500;
 }
 .ov-card.wide{grid-column:1/-1;}
+.ov-sec{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:22px 0 0 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.ov-sec::after{content:"";flex:1;height:1px;background:var(--line);}
+.ov-sec:first-child{margin-top:0;}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.ov-card p{font-size:14px;color:#3c3b32;}
+.ov-card ol{margin:0;padding-left:20px;font-size:14px;color:#3c3b32;}
+.ov-card ol li{margin-bottom:6px;}
+.ov-card.core{background:var(--forest);border-color:var(--forest);}
+.ov-card.core h3,.ov-card.core p{color:#EFEAD9;}
+.ov-card.core strong{color:var(--gold-soft);}
+.ov-card .sub{font-size:12px;color:#7a7968;margin:10px 0 4px 0;font-weight:600;letter-spacing:.02em;}
 
 /* ---------- DIAGRAMS ---------- */
 .diagram-block{
@@ -270,6 +281,68 @@ section.panel.active{display:block;animation:fadeIn .35s ease;}
 .map-display ul{padding-left:18px;font-size:14px;color:#DCE5D8;}
 .map-display li{margin-bottom:6px;}
 
+
+
+/* ---------- DIAGRAMS v2 (flow / branch / tree) ---------- */
+.dg-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 22px 0;font-size:12.5px;color:#5b5a4d;}
+.dg-legend span{display:inline-flex;align-items:center;gap:6px;}
+.dg-legend i{width:14px;height:14px;border-radius:4px;border:1.5px solid var(--line);display:inline-block;}
+.dg-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:3px;}
+.dg-head h3{margin:0;}
+.dg-type{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold);background:var(--gold-soft);padding:2px 8px;border-radius:6px;letter-spacing:.03em;}
+.dg-toolbar{display:flex;gap:8px;margin:0 0 16px 0;flex-wrap:wrap;}
+.dg-toolbar .mm-btn{padding:6px 13px;font-size:12px;}
+.dg-flow{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0;}
+.dg-node{width:100%;max-width:340px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--paper-2);color:var(--ink);text-align:center;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s;overflow-wrap:anywhere;}
+.dg-node:hover{border-color:var(--gold);transform:translateY(-1px);}
+.dg-node .lb{font-weight:600;font-size:14px;line-height:1.3;}
+.dg-node .sb{font-size:11.5px;opacity:.8;margin-top:2px;}
+.dg-node.k-main{background:var(--forest);border-color:var(--forest);color:#fff;}
+.dg-node.k-path{background:#E3EDDD;border-color:var(--sage);}
+.dg-node.k-result{background:var(--gold-soft);border-color:var(--gold);}
+.dg-node.k-warn{background:#F6E1DA;border-color:var(--wrong);}
+.dg-node.done{box-shadow:0 0 0 2px rgba(124,154,114,.55);}
+.dg-node.active{outline:2px solid var(--gold);outline-offset:2px;}
+.dg-detail{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.18);font-size:12.8px;font-weight:400;text-align:left;line-height:1.5;}
+.k-main .dg-detail{border-color:rgba(255,255,255,.35);}
+.dg-node.open .dg-detail{display:block;}
+.dg-edge{display:flex;flex-direction:column;align-items:center;padding:3px 0;max-width:100%;}
+.dg-edge .ar{color:var(--sage);font-size:17px;line-height:1;}
+.dg-edge .rl{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold);background:var(--gold-soft);padding:2px 8px;border-radius:6px;margin:3px 0;max-width:300px;text-align:center;overflow-wrap:anywhere;}
+.dg-edge.done .ar{color:var(--forest);}
+.dg-edge.warn .rl{background:#F6E1DA;color:var(--wrong);}
+.dg-branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;width:100%;margin-top:2px;align-items:start;}
+.dg-branch{min-width:0;border:1px dashed var(--line);border-radius:12px;padding:12px 10px;background:rgba(241,236,221,.35);}
+.dg-branch-title{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold);background:var(--gold-soft);padding:3px 8px;border-radius:6px;display:inline-block;margin-bottom:8px;}
+.dg-branch .dg-node{max-width:100%;}
+.dgtree .mm-node:not(.open)>.mm-row>.mm-note{display:none;}
+
+/* ---------- MINI MAP (collapsible tree) ---------- */
+.mm-toolbar{display:flex;gap:9px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.mm-btn{background:var(--paper-2);border:1.5px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;color:var(--forest-2);}
+.mm-btn:hover{border-color:var(--gold);color:var(--forest);}
+.mm-hint{font-size:12.5px;color:#7a7968;font-style:italic;}
+.mm-tree{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;box-shadow:var(--shadow);}
+.mm-node{min-width:0;}
+.mm-row{display:flex;align-items:flex-start;gap:8px;padding:7px 8px;border-radius:9px;margin:2px 0;flex-wrap:wrap;overflow-wrap:anywhere;}
+.mm-row.has-kids{cursor:pointer;}
+.mm-row.has-kids:hover{background:#EAF1E6;}
+.mm-chev{flex:0 0 18px;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line);color:var(--forest-2);font-size:11px;line-height:16px;text-align:center;transition:transform .15s;}
+.mm-node.open>.mm-row>.mm-chev{transform:rotate(90deg);background:var(--forest);color:#fff;border-color:var(--forest);}
+.mm-dot{flex:0 0 18px;width:18px;height:18px;position:relative;}
+.mm-dot::after{content:"";position:absolute;left:6px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.mm-label{font-size:14px;font-weight:600;color:var(--forest);flex:1 1 0;min-width:0;}
+.mm-l1>.mm-row .mm-label{font-family:'Fraunces',serif;font-size:19px;font-weight:700;}
+.mm-l2>.mm-row .mm-label{font-size:15.5px;}
+.mm-l4>.mm-row .mm-label{font-weight:500;font-size:13.5px;color:#3c3b32;}
+.mm-rel{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold);background:var(--gold-soft);padding:2px 8px;border-radius:6px;white-space:nowrap;margin-top:2px;}
+.mm-count{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#8a8a78;margin-top:3px;}
+.mm-node.open>.mm-row>.mm-count{display:none;}
+.mm-note{flex-basis:100%;margin-left:26px;font-size:12.8px;color:#5b5a4d;margin-top:-2px;}
+.mm-kids{display:none;margin-left:17px;padding-left:12px;border-left:2px solid var(--line);}
+.mm-node.open>.mm-kids{display:block;}
+@media(max-width:620px){.mm-kids{margin-left:10px;padding-left:8px;}.mm-l1>.mm-row .mm-label{font-size:17px;}}
+
 /* ---------- LEVEL TABS (flashcards & quiz difficulty) ---------- */
 .level-tabs{display:flex;gap:9px;margin-bottom:18px;flex-wrap:wrap;}
 .level-btn{
@@ -313,7 +386,7 @@ section.panel.active{display:block;animation:fadeIn .35s ease;}
 .fc-card{
   perspective:1200px;
   display:grid;
-  min-height:190px;
+  min-height:230px;
 }
 .fc-inner{
   display:grid;
@@ -344,6 +417,8 @@ section.panel.active{display:block;animation:fadeIn .35s ease;}
 .fc-back .fc-tag{color:var(--gold-soft);}
 .fc-term{font-family:'Fraunces',serif;font-size:16.5px;color:var(--forest);align-self:flex-start;margin:auto 0;padding:6px 0;line-height:1.4;word-wrap:break-word;overflow-wrap:break-word;}
 .fc-answer{font-size:13.5px;align-self:flex-start;margin:auto 0;padding:6px 0;line-height:1.5;word-wrap:break-word;overflow-wrap:break-word;}
+.fc-expl{font-size:11.5px;line-height:1.45;color:var(--gold-soft);border-top:1px solid rgba(255,255,255,.18);padding-top:8px;margin-top:6px;}
+.fc-card.fc-dense .fc-expl{font-size:10.5px;}
 .fc-card.fc-dense .fc-term{font-size:15px;line-height:1.35;}
 .fc-card.fc-dense .fc-answer{font-size:12.5px;line-height:1.45;}
 .fc-flip-hint{font-size:10px;color:#a19f8c;margin-top:8px;flex-shrink:0;}
@@ -386,6 +461,19 @@ section.panel.active{display:block;animation:fadeIn .35s ease;}
 .q-opt.locked{cursor:default;}
 .q-item.answered .q-opt:not(.correct):not(.incorrect){opacity:.55;}
 
+
+.q-letter{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold);}
+.q-diff{font-weight:700;}
+.q-diff-easy{color:#3d7a3d;}
+.q-diff-medium{color:#b8860b;}
+.q-diff-hard{color:#b24a3a;}
+.q-expl{display:none;margin-top:12px;padding:10px 12px;border-left:3px solid var(--gold);background:var(--paper-2);border-radius:6px;font-size:13px;line-height:1.55;color:var(--ink);}
+.q-item.answered .q-expl{display:block;}
+.quiz-summary{width:100%;max-width:320px;margin:22px auto 0 auto;border-collapse:collapse;font-size:13px;}
+.quiz-summary th,.quiz-summary td{border:1px solid var(--line);padding:7px 12px;text-align:left;}
+.quiz-summary th{background:var(--paper-2);}
+.quiz-summary tr.total td{font-weight:700;}
+
 footer.site{
   border-top:1px solid var(--line);
   padding:22px 0 34px 0;
@@ -415,14 +503,6 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
 </style>
 </head>
 <body>
-
-<div class="credit-bar">
-  <div class="wrap">
-    <span>© <b>Anmar Taha</b> — All rights reserved</span>
-    <span>Telegram: <b>@AnmarTaha</b></span>
-    <span>Instagram: <b>a.za18</b></span>
-  </div>
-</div>
 
 <header class="top">
   <div class="wrap">
@@ -461,111 +541,259 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
     </div>
     <div class="grid-cards">
 
-      <div class="ov-card">
-        <h3><span class="dot"></span>Primary vs. secondary metabolites</h3>
-        <table class="ov-table">
-          <tr><th>Primary</th><th>Secondary</th></tr>
-          <tr><td>High MW macromolecules</td><td>Low MW micromolecules</td></tr>
-          <tr><td>Large quantities</td><td>Small quantities</td></tr>
-          <tr><td>Essential for growth/reproduction</td><td>Specific role; medicinal value</td></tr>
-          <tr><td>Same across all plants</td><td>Unique to species</td></tr>
-          <tr><td>Proteins, polysaccharides, vitamins</td><td>Alkaloids, glycosides, tannins…</td></tr>
-        </table>
+      <div class="ov-sec">01 · Core Idea</div>
+      <div class="ov-card wide core">
+        <h3><span class="dot"></span>Core Idea</h3>
+        <p>Secondary metabolites are the compounds responsible for the pharmaceutical and medicinal uses of plants. Their biosynthesis usually starts with <strong>primary metabolites</strong> (carbohydrates from photosynthesis) and follows two master routes: the <strong>shikimic acid pathway</strong> for <strong>aromatic</strong> compounds and the <strong>acetate–mevalonic acid pathway</strong> for <strong>aliphatic (nonaromatic)</strong> compounds. A <strong>mixed pathway</strong> derives from both.</p>
       </div>
-
+      <div class="ov-sec">02 · Learning Points</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>What you should leave with</h3>
+        <ul>
+          <li>Differentiate <strong>primary</strong> from <strong>secondary</strong> metabolites</li>
+          <li>Know the <strong>5 classes</strong> of secondary metabolites and the example compounds</li>
+          <li>Secondary metabolites can be <strong>aromatic or aliphatic</strong> — each has its own pathway</li>
+          <li>Shikimic acid pathway: importance, intermediates, <strong>chorismic acid</strong> branch point, and the three aromatic amino acids</li>
+          <li>Acetate–mevalonate pathway: Acetyl-CoA → HMG-CoA → mevalonic acid → <strong>IPP/DMAP</strong> → terpene chain lengths (C10, C15, C20, C30)</li>
+          <li>How <strong>statins</strong> (antilipidemic drugs) block cholesterol formation</li>
+          <li>The master route linking photosynthesis to every class of secondary metabolite</li>
+        </ul>
+      </div>
+      <div class="ov-sec">03 · Key Definitions</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Key terms</h3>
+        <div class="tbl-scroll"><table class="ov-table">
+          <tr><th>Term</th><th>Meaning (from the lecture)</th></tr>
+          <tr><td><strong>Primary metabolites</strong></td><td>Macromolecules with high molecular weight (proteins, polysaccharides, vitamins); produced in large quantities; essential and directly involved in growth, development and reproduction; present in all plants</td></tr>
+          <tr><td><strong>Secondary metabolites</strong></td><td>Micro molecules with lower molecular weight; produced in small quantities; play a specific role in the plant; responsible for its pharmaceutical and medicinal uses; unique to different plant species</td></tr>
+          <tr><td><strong>Aromatic secondary metabolites</strong></td><td>Aromatic active compounds → formed by the shikimic acid pathway</td></tr>
+          <tr><td><strong>Aliphatic secondary metabolites</strong></td><td>Nonaromatic active compounds → formed by the acetate–mevalonic acid pathway</td></tr>
+          <tr><td><strong>Shikimic acid pathway</strong></td><td>Biosynthetic route of aromatic active compounds; named after the Japanese flower <em>Shikimi</em></td></tr>
+          <tr><td><strong>Acetate–mevalonate pathway</strong></td><td>Also called <em>isoprenoid biosynthesis</em>; builds terpenoids and steroids by forming isoprenoid units</td></tr>
+          <tr><td><strong>Mixed pathway</strong></td><td>A pathway derived from both the shikimate and mevalonate pathways</td></tr>
+          <tr><td><strong>Chorismic acid</strong></td><td>The most important intermediate of the shikimic acid pathway</td></tr>
+          <tr><td><strong>Prephenic acid</strong></td><td>The last nonaromatic compound in the shikimate sequence</td></tr>
+          <tr><td><strong>HMG-CoA</strong></td><td>[(3S)-3-Hydroxy-3-methylglutaryl CoA] — intermediate that is reduced to mevalonic acid</td></tr>
+          <tr><td><strong>IPP</strong></td><td>Isopentenyl pyrophosphate / diphosphate (C5) — the isoprene unit</td></tr>
+          <tr><td><strong>DMAP</strong></td><td>Dimethylallyl pyrophosphate (C5) — isomer of IPP; has a good leaving group (pyrophosphate) and is very reactive toward nucleophilic substitution</td></tr>
+          <tr><td><strong>Squalene</strong></td><td>A C30 terpene; direct precursor of steroids</td></tr>
+        </table></div>
+      </div>
+      <div class="ov-sec">04 · Classification / Types</div>
       <div class="ov-card">
         <h3><span class="dot"></span>5 classes of secondary metabolites</h3>
-        <div class="pill-row">
-          <span class="pill">Alkaloids</span>
-          <span class="pill">Flavonoids</span>
-          <span class="pill">Glycosides</span>
-          <span class="pill">Saponins</span>
-          <span class="pill">Tannins</span>
-        </div>
-        <p style="margin-top:12px;font-size:13.5px;">Examples: Digoxin, Caffeine, Ephedrine, Coniine.</p>
+        <div class="pill-row"><span class="pill">Alkaloids</span><span class="pill">Flavonoids</span><span class="pill">Glycosides</span><span class="pill">Saponins</span><span class="pill">Tannins</span></div>
+        <p style="margin-top:12px;">Structures shown: <strong>Digoxin, Caffeine, Ephedrine, Coniine</strong>.</p>
       </div>
-
       <div class="ov-card">
-        <h3><span class="dot"></span>Aromatic vs. aliphatic</h3>
+        <h3><span class="dot"></span>By chemical nature</h3>
         <ul>
-          <li><strong>Aliphatic</strong> examples: Digoxin, Coniine</li>
-          <li><strong>Aromatic</strong> examples: Morphine, Hydroxychloroquine</li>
-          <li>Biosynthesis of secondary compounds <strong>always starts from primary metabolites</strong></li>
+          <li><strong>Aliphatic</strong> (nonaromatic): Digoxin, Coniine → acetate–mevalonic acid pathway</li>
+          <li><strong>Aromatic</strong>: Morphine, Hydroxychloroquine → shikimic acid pathway</li>
+          <li><strong>Mixed</strong>: derived from shikimate + mevalonate pathways</li>
         </ul>
       </div>
-
       <div class="ov-card">
-        <h3><span class="dot"></span>The two master pathways</h3>
+        <h3><span class="dot"></span>Terpene classes (by isoprene units)</h3>
+        <div class="tbl-scroll"><table class="ov-table">
+          <tr><th>Class</th><th>Isoprene units</th><th>Carbons</th></tr>
+          <tr><td>Monoterpenes</td><td>2</td><td>C10</td></tr>
+          <tr><td>Sesquiterpenes</td><td>3</td><td>C15</td></tr>
+          <tr><td>Diterpenes</td><td>4</td><td>C20</td></tr>
+          <tr><td>Steroids / triterpenoids (via squalene)</td><td>—</td><td>C30</td></tr>
+        </table></div>
+      </div>
+      <div class="ov-card">
+        <h3><span class="dot"></span>Final products of the master route</h3>
         <ul>
-          <li><strong>Shikimic acid pathway</strong> → aromatic secondary metabolites</li>
-          <li><strong>Acetate–mevalonic acid pathway</strong> → aliphatic secondary metabolites</li>
-          <li>A <strong>mixed pathway</strong> can draw on both shikimate and mevalonate routes</li>
+          <li>Shikimic acid pathway → <strong>Flavonoids, volatile oils</strong>; and → aromatic amino acids → <strong>Alkaloids</strong></li>
+          <li>Acetyl-CoA → aliphatic amino acids → <strong>Alkaloids</strong></li>
+          <li>Isoprenoid (acetate) pathway → mevalonic acid/isoprene unit → <strong>Terpenoids, steroids, volatile oils</strong></li>
         </ul>
       </div>
-
       <div class="ov-card">
-        <h3><span class="dot"></span>Shikimic acid pathway — key facts</h3>
+        <h3><span class="dot"></span>Monoterpene examples shown</h3>
+        <div class="sub">ACYCLIC</div>
         <ul>
-          <li>Named after the Japanese flower <strong>Shikimi</strong>; shikimic acid first isolated in <strong>1885</strong></li>
-          <li>Found in <strong>plants, fungi, bacteria</strong> — absent in animals</li>
-          <li>Aromatic amino acids are therefore <strong>essential nutrients</strong> for animals</li>
-          <li>Starts from carbohydrates via <strong>glycolysis</strong> (PEP) + <strong>pentose phosphate pathway</strong> (erythrose-4-phosphate)</li>
-          <li>Produces <strong>phenylalanine, tyrosine, tryptophan</strong></li>
-          <li>Precursor of tannins, flavonoids, coumarins, alkaloids</li>
+          <li>Hydrocarbons: Myrcene, Ocimene</li>
+          <li>Oxygenated: Citronellal, Linalool</li>
+        </ul>
+        <div class="sub">MONOCYCLIC</div>
+        <ul>
+          <li>Hydrocarbons: Terpinolene, Phellandrene</li>
+          <li>Oxygenated: Carvone, Thymol</li>
         </ul>
       </div>
-
+      <div class="ov-sec">05 · Important Concepts</div>
       <div class="ov-card">
-        <h3><span class="dot"></span>Shikimate pathway — sequence</h3>
+        <h3><span class="dot"></span>Shikimic acid pathway — importance</h3>
         <ul>
-          <li>PEP + Erythrose-4-P → 2-keto-3-deoxy-7-phospho-D-glucoheptonic acid</li>
-          <li>Cyclization + dephosphorylation → 3-Dehydroquinic acid</li>
-          <li>Dehydration → 3-Dehydroshikimic acid</li>
-          <li>Hydrogenation (keto → OH) → <strong>Shikimic acid</strong></li>
-          <li>Phosphorylation + PEP, −H₂O → <strong>Chorismic acid</strong> (key branch point)</li>
+          <li>Most medicinally active secondary metabolites are <strong>aromatic compounds</strong></li>
+          <li>Produces the critical aromatic amino acids <strong>phenylalanine, tyrosine, tryptophan</strong> — synthetic precursors of many medicinal compounds</li>
+          <li>Biosynthetic precursor of aromatic amino acids, <strong>tannins, flavonoids, coumarins</strong> and others</li>
         </ul>
       </div>
-
+      <div class="ov-card">
+        <h3><span class="dot"></span>Shikimic acid pathway — occurrence</h3>
+        <ul>
+          <li>Present and used by <strong>plants, fungi and bacteria</strong>; <strong>absent in animals</strong></li>
+          <li>Animals cannot synthesize the three aromatic amino acids → they are <strong>essential nutrients</strong> in the animal diet</li>
+          <li>Starts from simple carbohydrates (primary) from <strong>glycolysis</strong> and the <strong>pentose phosphate pathway</strong>; ends with aromatic amino acids that form aromatic active compounds (secondary)</li>
+        </ul>
+      </div>
+      <div class="ov-card">
+        <h3><span class="dot"></span>Acetate–mevalonate pathway (isoprenoid biosynthesis)</h3>
+        <ul>
+          <li>Biosynthesizes aliphatic active compounds: <strong>terpenoids and steroids</strong></li>
+          <li>Forms the <strong>isoprenoid units</strong>, the building blocks of terpenoid and steroid biosynthesis</li>
+          <li>IPP and DMAP are the basic precursors of terpenoids</li>
+          <li>IPP is interconvertible with DMAP; DMAP is very reactive at the pyrophosphate position</li>
+          <li><strong>IPP keeps substituting the pyrophosphate group</strong> to build terpenoids and steroids</li>
+        </ul>
+      </div>
+      <div class="ov-card">
+        <h3><span class="dot"></span>Squalene → steroids</h3>
+        <ul>
+          <li>2 Farnesyl-PP (C15 + C15) → <strong>Squalene</strong> (C30)</li>
+          <li>Oxidation + cyclization → <strong>cyclo-penta-phenanthrene</strong>, the basic skeleton of cholesterol and other steroids/triterpenoids</li>
+        </ul>
+      </div>
+      <div class="ov-sec">06 · Important Differences</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Primary vs. secondary metabolites</h3>
+        <div class="tbl-scroll"><table class="ov-table">
+          <tr><th>Primary</th><th>Secondary</th></tr>
+          <tr><td>High-MW macromolecules (proteins, polysaccharides, vitamins)</td><td>Low-MW micromolecules</td></tr>
+          <tr><td>Produced in large quantities</td><td>Produced in small quantities</td></tr>
+          <tr><td>Essential; directly involved in growth, development, reproduction</td><td>Specific role in the plant; responsible for pharmaceutical and medicinal uses</td></tr>
+          <tr><td>Present in all plants (same in all)</td><td>Unique to different plant species</td></tr>
+          <tr><td>Proteins, polysaccharides, nucleotides, vitamins</td><td>Antibiotics, drugs, pigments, medicinal compounds</td></tr>
+        </table></div>
+      </div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Shikimate vs. acetate–mevalonate</h3>
+        <div class="tbl-scroll"><table class="ov-table">
+          <tr><th></th><th>Shikimic acid</th><th>Acetate–mevalonate</th></tr>
+          <tr><td>Gives</td><td>Aromatic compounds</td><td>Aliphatic compounds</td></tr>
+          <tr><td>Products</td><td>Aromatic amino acids, tannins, flavonoids, coumarins</td><td>Terpenoids, steroids</td></tr>
+          <tr><td>Starts from</td><td>PEP (glycolysis) + erythrose-4-phosphate (pentose phosphate pathway)</td><td>Acetyl-CoA</td></tr>
+          <tr><td>Key unit</td><td>Chorismic acid</td><td>Isoprene unit (IPP)</td></tr>
+        </table></div>
+      </div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Prephenic acid — two aromatization routes</h3>
+        <div class="tbl-scroll"><table class="ov-table">
+          <tr><th>Route</th><th>Reactions</th><th>Intermediate</th><th>Amino acid</th></tr>
+          <tr><td>First</td><td>Dehydration + decarboxylation (−H₂O, −CO₂)</td><td>Phenylpyruvic acid</td><td>Phenylalanine</td></tr>
+          <tr><td>Second</td><td>Dehydrogenation + decarboxylation (−CO₂)</td><td>p-Hydroxyphenylpyruvic acid</td><td>Tyrosine</td></tr>
+        </table></div>
+      </div>
+      <div class="ov-sec">07 · Processes / Stages</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Master route</h3>
+        <ul>
+          <li>CO₂ + H₂O + sunlight → photosynthesis → <strong>Carbohydrates</strong></li>
+          <li>Carbohydrates → Pentose phosphate pathway → Erythrose-4-phosphate → <strong>Shikimic acid pathway</strong> → Flavonoids, volatile oils / aromatic amino acids → Alkaloids</li>
+          <li>Carbohydrates → Glycolysis → Phosphoenolpyruvate → Pyruvic acid → <strong>Acetyl-CoA</strong></li>
+          <li>Acetyl-CoA → Mevalonic acid / isoprene unit (isoprenoid / acetate pathway) → Terpenoids, steroids, volatile oils</li>
+          <li>Acetyl-CoA → Aliphatic amino acids → Alkaloids</li>
+        </ul>
+      </div>
+      <div class="ov-card">
+        <h3><span class="dot"></span>Shikimic acid pathway — sequence</h3>
+        <ol>
+          <li>PEP + Erythrose-4-phosphate → 2-Keto-3-deoxy-7-phospho-D-glucoheptonic acid</li>
+          <li>Cyclization + removal of phosphate → <strong>3-Dehydroquinic acid</strong></li>
+          <li>Dehydration → <strong>3-Dehydroshikimic acid</strong></li>
+          <li>Keto group replaced by OH (hydrogenation) → <strong>Shikimic acid</strong></li>
+          <li>Phosphorylation → <strong>Shikimic acid-3-phosphate</strong></li>
+          <li>+ PEP, −H₂O → <strong>Chorismic acid</strong> (branch point)</li>
+        </ol>
+      </div>
       <div class="ov-card">
         <h3><span class="dot"></span>Chorismic acid — two branches</h3>
         <ul>
-          <li><strong>Branch 1:</strong> → anthranilic acid → <strong>Tryptophan</strong></li>
-          <li><strong>Branch 2:</strong> shifting rearrangement → Prephenic acid (last non-aromatic intermediate)</li>
-          <li>Prephenic acid → dehydration + decarboxylation → phenylpyruvic acid → <strong>Phenylalanine</strong></li>
-          <li>Prephenic acid → dehydrogenation + decarboxylation → p-hydroxyphenylpyruvic acid → <strong>Tyrosine</strong></li>
+          <li><strong>Branch 1:</strong> → Anthranilic acid (amination and shifting) → + phosphoribosyl pyrophosphate + serine → <strong>Tryptophan</strong></li>
+          <li><strong>Branch 2:</strong> shifting rearrangement → <strong>Prephenic acid</strong> → phenylpyruvic acid → (reductive amination) <strong>Phenylalanine</strong>; or p-hydroxyphenylpyruvic acid → (reductive amination) <strong>Tyrosine</strong></li>
         </ul>
       </div>
-
-      <div class="ov-card">
-        <h3><span class="dot"></span>Acetate–mevalonate pathway — key facts</h3>
-        <ul>
-          <li>= <strong>Isoprenoid biosynthesis</strong></li>
-          <li>Builds aliphatic actives: <strong>terpenoids and steroids</strong></li>
-          <li>Basic building block: the <strong>isoprenoid (isoprene) unit</strong></li>
-          <li>Starting material: <strong>Acetyl-CoA</strong> (from glycolysis/pyruvate)</li>
-        </ul>
-      </div>
-
       <div class="ov-card">
         <h3><span class="dot"></span>Acetate–mevalonate — sequence</h3>
-        <ul>
-          <li>2 Acetyl-CoA → Acetoacetyl-CoA</li>
-          <li>+ Acetyl-CoA + H₂O (HMG-CoA synthase) → <strong>HMG-CoA</strong></li>
-          <li>HMG-CoA reductase (reduction) → <strong>Mevalonic acid</strong> — <em>the statin drug target</em></li>
-          <li>Phosphorylation + decarboxylation → <strong>IPP</strong> (isopentenyl pyrophosphate, C5, the isoprene unit)</li>
-          <li>IPP ⇌ DMAP (dimethylallyl pyrophosphate)</li>
-        </ul>
+        <ol>
+          <li>Glucose → 2 Acetyl-CoA → <strong>Aceto-acetyl-CoA</strong></li>
+          <li>+ H₂O + another Acetyl-CoA (HMG-CoA synthase) → <strong>HMG-CoA</strong></li>
+          <li>HMG-CoA reductase (reduction) → <strong>Mevalonic acid</strong></li>
+          <li>Phosphorylation, then decarboxylation → <strong>IPP</strong> (C5)</li>
+          <li>IPP ⇌ <strong>DMAP</strong></li>
+        </ol>
       </div>
-
       <div class="ov-card wide">
         <h3><span class="dot"></span>Terpene chain-length ladder</h3>
-        <table class="ov-table">
-          <tr><th>Reaction</th><th>Product</th><th>Carbon count</th><th>Terpene class</th></tr>
-          <tr><td>IPP + IPP</td><td>Geranyl-PP (GPP)</td><td>C10</td><td>Monoterpenes</td></tr>
-          <tr><td>GPP + IPP</td><td>Farnesyl-PP (FPP)</td><td>C15</td><td>Sesquiterpenes</td></tr>
-          <tr><td>FPP + IPP</td><td>Geranylgeranyl-PP (GGPP)</td><td>C20</td><td>Diterpenes</td></tr>
+        <div class="tbl-scroll"><table class="ov-table">
+          <tr><th>Reaction</th><th>Product</th><th>C</th><th>Class</th></tr>
+          <tr><td>IPP + IPP</td><td>Geranyl-PP (GPP)</td><td>C10</td><td>Monoterpenes (2 isoprene)</td></tr>
+          <tr><td>GPP + IPP</td><td>Farnesyl-PP (FPP)</td><td>C15</td><td>Sesquiterpenes (3 isoprene)</td></tr>
+          <tr><td>FPP + IPP</td><td>Geranylgeranyl-PP (GGPP)</td><td>C20</td><td>Diterpenes (4 isoprene)</td></tr>
           <tr><td>FPP + FPP</td><td>Squalene</td><td>C30</td><td>Steroids / triterpenoids → Cholesterol</td></tr>
-        </table>
+        </table></div>
+      </div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Cholesterol pathway (statin slide)</h3>
+        <p>Acetyl-CoA → HMG-CoA → Mevalonate → Isopentenyl-PP → Geranyl-PP → Farnesyl-PP → Squalene → <strong>Cholesterol</strong></p>
+      </div>
+      <div class="ov-sec">08 · Important Scientists / Discoveries</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Discovery</h3>
+        <ul>
+          <li>Shikimic acid was first isolated in <strong>1885</strong> from the Japanese flower <strong>Shikimi</strong> — the source of the pathway’s name</li>
+        </ul>
+      </div>
+      <div class="ov-sec">09 · Examples</div>
+      <div class="ov-card">
+        <h3><span class="dot"></span>Drugs from natural products (secondary metabolites)</h3>
+        <ul>
+          <li>Digoxin tablets</li>
+          <li>Buscopan</li>
+          <li>Cafergot</li>
+          <li>Vincristine</li>
+          <li>Hydroxychloroquine sulfate tablets</li>
+          <li>Mebo (herbal and natural ointment, β-sitosterol)</li>
+        </ul>
+      </div>
+      <div class="ov-card">
+        <h3><span class="dot"></span>Aliphatic active compounds shown</h3>
+        <ul>
+          <li>Steroid structure (β-sitosterol, as in Mebo)</li>
+          <li>Monoterpenes (acyclic and monocyclic)</li>
+          <li>Digoxin</li>
+          <li>Essential (volatile) oil</li>
+        </ul>
+      </div>
+      <div class="ov-sec">10 · Clinical / Practical Importance</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Why it matters</h3>
+        <ul>
+          <li>Secondary metabolites are responsible for the <strong>pharmaceutical and medicinal uses</strong> of plants</li>
+          <li><strong>Statins</strong> (antilipidemic drugs) inhibit <strong>HMG-CoA reductase</strong>, blocking the conversion of HMG-CoA to mevalonate and so the formation of cholesterol</li>
+          <li>Animals lack the shikimate pathway → <strong>phenylalanine, tyrosine, tryptophan</strong> must come from the diet</li>
+        </ul>
+      </div>
+      <div class="ov-sec">11 · Exam Focus</div>
+      <div class="ov-card wide">
+        <h3><span class="dot"></span>Must remember</h3>
+        <ul>
+          <li>Primary vs. secondary: MW, quantity, role, distribution, examples</li>
+          <li>The 5 classes: Alkaloids, Flavonoids, Glycosides, Saponins, Tannins</li>
+          <li><strong>Aromatic → shikimic acid</strong>; <strong>aliphatic → acetate–mevalonic acid</strong>; mixed = both</li>
+          <li>Shikimic acid first isolated in <strong>1885</strong> from the Japanese flower Shikimi</li>
+          <li>Shikimate pathway: plants, fungi, bacteria — <strong>not animals</strong></li>
+          <li>Starting points: PEP (glycolysis) + erythrose-4-phosphate (pentose phosphate pathway)</li>
+          <li><strong>Chorismic acid</strong> = most important intermediate; <strong>prephenic acid</strong> = last nonaromatic compound</li>
+          <li>Tryptophan via anthranilic acid; Phe via phenylpyruvic acid; Tyr via p-hydroxyphenylpyruvic acid</li>
+          <li>HMG-CoA synthase vs. <strong>HMG-CoA reductase</strong> (statin target)</li>
+          <li>IPP (C5) ⇌ DMAP; DMAP is reactive toward nucleophilic substitution</li>
+          <li>Chain lengths: C10 → C15 → C20; squalene C30 → steroids/triterpenoids</li>
+        </ul>
       </div>
 
     </div>
@@ -575,64 +803,30 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
   <section id="diagrams" class="panel">
     <div class="panel-head">
       <h2>Interactive Diagrams</h2>
-      <p>Click any step to reveal what happens at that point in the pathway.</p>
+      <p>Tap any box to open its details and light up the path that leads to it. Labels on the arrows name the reaction.</p>
     </div>
-
-    <div class="diagram-block">
-      <h3>Master route: from photosynthesis to secondary metabolites</h3>
-      <div class="diagram-hint">Click a box.</div>
-      <div class="flow-row" id="masterFlow"></div>
-      <div class="detail-box" id="masterDetail"></div>
+    <div class="dg-legend">
+      <span><i style="background:var(--forest);border-color:var(--forest)"></i>Main concept</span>
+      <span><i style="background:#E3EDDD;border-color:var(--sage)"></i>Pathway</span>
+      <span><i style="background:var(--paper-2)"></i>Intermediate</span>
+      <span><i style="background:var(--gold-soft);border-color:var(--gold)"></i>Product / result</span>
+      <span><i style="background:#F6E1DA;border-color:var(--wrong)"></i>Key point / drug target</span>
     </div>
-
-    <div class="diagram-block">
-      <h3>Shikimic acid pathway (aromatic route)</h3>
-      <div class="diagram-hint">Click each intermediate to see the transformation that produced it.</div>
-      <div class="flow-row" id="shikimateFlow"></div>
-      <div class="detail-box" id="shikimateDetail"></div>
-      <div class="diagram-hint" style="margin-top:16px;">Branch point — chorismic acid splits two ways:</div>
-      <div class="two-col-flow" style="margin-top:8px;">
-        <div>
-          <div class="flow-branch-label">BRANCH 1 → TRYPTOPHAN</div>
-          <div class="flow-row" id="branch1Flow" style="margin-top:8px;"></div>
-        </div>
-        <div>
-          <div class="flow-branch-label">BRANCH 2 → PHE / TYR</div>
-          <div class="flow-row" id="branch2Flow" style="margin-top:8px;"></div>
-        </div>
-      </div>
-      <div class="detail-box" id="branchDetail"></div>
-    </div>
-
-    <div class="diagram-block">
-      <h3>Acetate–mevalonate pathway (isoprenoid route)</h3>
-      <div class="diagram-hint">Click each intermediate, from Acetyl-CoA to the isoprene unit.</div>
-      <div class="flow-row" id="mevaFlow"></div>
-      <div class="detail-box" id="mevaDetail"></div>
-    </div>
-
-    <div class="diagram-block">
-      <h3>IPP builds the terpene ladder</h3>
-      <div class="diagram-hint">Click each product to see its carbon count and terpene class.</div>
-      <div class="flow-row" id="ladderFlow"></div>
-      <div class="detail-box" id="ladderDetail"></div>
-    </div>
-
+    <div id="dgList"></div>
   </section>
 
   <!-- ===================== 3. MINI MAP ===================== -->
   <section id="mapview" class="panel">
     <div class="panel-head">
       <h2>Mini Map</h2>
-      <p>Click any topic node — the explanation appears in the panel on the right.</p>
+      <p>Tap a topic to open its branches. Tap again to close it.</p>
     </div>
-    <div class="mapzone">
-      <div class="map-nodes" id="mapNodes"></div>
-      <div class="map-display" id="mapDisplay">
-        <h4>Pick a topic</h4>
-        <p class="placeholder">Select any node on the left to read about it here.</p>
-      </div>
+    <div class="mm-toolbar">
+      <button class="mm-btn" id="mmExpand">Expand all</button>
+      <button class="mm-btn" id="mmCollapse">Collapse all</button>
+      <span class="mm-hint">Tags show the relation to the parent topic.</span>
     </div>
+    <div class="mm-tree" id="mmTree"></div>
   </section>
 
   <!-- ===================== 4. FLASH CARDS ===================== -->
@@ -657,7 +851,7 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
   <section id="quiz" class="panel">
     <div class="panel-head">
       <h2>Quiz Bank</h2>
-      <p>50 multiple-choice questions across three difficulty levels. Answer positions are shuffled each time you load a level.</p>
+      <p>50 multiple-choice questions across three difficulty levels. Each answer comes with an explanation based on the lecture. Correct answers are spread across A, B, C and D.</p>
     </div>
     <div class="level-tabs" id="quizLevelTabs">
       <button class="level-btn active" data-level="easy">Level 1 · Easy<span class="level-badge">25</span></button>
@@ -669,17 +863,16 @@ footer.site p{font-size:12.5px;color:#8a8a78;margin:0;}
       <button class="quiz-check" id="quizResetBtn">Reset quiz</button>
     </div>
     <div id="quizList"></div>
+    <table class="quiz-summary">
+      <tr><th>Level</th><th>Questions</th></tr>
+      <tr><td>Easy</td><td>25</td></tr>
+      <tr><td>Medium</td><td>15</td></tr>
+      <tr><td>Hard</td><td>10</td></tr>
+      <tr class="total"><td>Total</td><td>50</td></tr>
+    </table>
   </section>
 
 </main>
-
-<footer class="site">
-  <div class="credit-line">
-    <span><b>© Anmar Taha.</b> All rights reserved.</span>
-    <a href="https://t.me/AnmarTaha" target="_blank" rel="noopener">Telegram: @AnmarTaha</a>
-    <a href="https://instagram.com/a.za18" target="_blank" rel="noopener">Instagram: a.za18</a>
-  </div>
-</footer>
 
 <script>
 /* ============================================================
@@ -696,136 +889,464 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
 });
 
 /* ============================================================
-   HELPER: build a clickable flow diagram
+   INTERACTIVE DIAGRAMS
+   kinds: main | path | inter | result | warn
+   step: {label, sub, kind, desc, via, viaKind, branchVia, branches:[{title, steps}]}
 ============================================================ */
-function buildFlow(containerId, detailId, steps){
-  const row = document.getElementById(containerId);
-  const detail = document.getElementById(detailId);
-  steps.forEach((step,i)=>{
-    if(i>0){
-      const arrow = document.createElement('span');
-      arrow.className='flow-arrow';
-      arrow.innerHTML='→';
-      row.appendChild(arrow);
-    }
-    const node = document.createElement('div');
-    node.className='flow-node clickable';
-    node.innerHTML = step.label + (step.sub ? '<small>'+step.sub+'</small>' : '');
-    node.addEventListener('click',()=>{
-      row.querySelectorAll('.flow-node').forEach(n=>n.classList.remove('active'));
-      node.classList.add('active');
-      detail.innerHTML = step.detail;
-      detail.classList.add('show');
+function dgPlain(h){const d=document.createElement('div');d.innerHTML=h;return d.textContent;}
+function dgEdge(label, kind){
+  const e=document.createElement('div');
+  e.className='dg-edge'+(kind?' '+kind:'');
+  if(label){const r=document.createElement('span');r.className='rl';r.textContent=label;e.appendChild(r);}
+  const a=document.createElement('span');a.className='ar';a.textContent='↓';e.appendChild(a);
+  return e;
+}
+function dgNode(st){
+  const n=document.createElement('div');
+  n.className='dg-node k-'+(st.kind||'inter');
+  let h='<div class="lb">'+st.label+'</div>';
+  if(st.sub) h+='<div class="sb">'+st.sub+'</div>';
+  if(st.desc) h+='<div class="dg-detail">'+st.desc+'</div>';
+  n.innerHTML=h;
+  if(st.desc) n.title=dgPlain(st.desc);
+  return n;
+}
+function dgFlow(steps){
+  const flow=document.createElement('div');
+  flow.className='dg-flow';
+  steps.forEach((st,i)=>{
+    if(i>0) flow.appendChild(dgEdge(st.via, st.viaKind));
+    const n=dgNode(st);
+    flow.appendChild(n);
+    n.addEventListener('click',()=>{
+      const kids=[...flow.children];
+      const idx=kids.indexOf(n);
+      kids.forEach((el,j)=>{
+        if(j<=idx) el.classList.add('done'); else el.classList.remove('done');
+        if(el.classList.contains('dg-node')) el.classList.remove('active');
+      });
+      n.classList.add('active');
+      n.classList.toggle('open');
     });
-    row.appendChild(node);
+    if(st.branches){
+      flow.appendChild(dgEdge(st.branchVia||''));
+      const grid=document.createElement('div');
+      grid.className='dg-branches';
+      st.branches.forEach(b=>{
+        const box=document.createElement('div');
+        box.className='dg-branch';
+        if(b.title){const t=document.createElement('div');t.className='dg-branch-title';t.textContent=b.title;box.appendChild(t);}
+        box.appendChild(dgFlow(b.steps));
+        grid.appendChild(box);
+      });
+      flow.appendChild(grid);
+    }
   });
+  return flow;
+}
+function dtBuild(node, level){
+  const wrap=document.createElement('div');
+  wrap.className='mm-node mm-l'+Math.min(level,4);
+  const kids=node.c||[];
+  const row=document.createElement('div');
+  row.className='mm-row'+((kids.length||node.d)?' has-kids':'');
+  const icon=document.createElement('span');
+  icon.className=kids.length?'mm-chev':'mm-dot';
+  if(kids.length) icon.textContent='▶';
+  row.appendChild(icon);
+  const lab=document.createElement('span');
+  lab.className='mm-label';
+  lab.textContent=node.n;
+  row.appendChild(lab);
+  if(node.via){const r=document.createElement('span');r.className='mm-rel';r.textContent=node.via;row.appendChild(r);}
+  if(kids.length){const c=document.createElement('span');c.className='mm-count';c.textContent='+'+kids.length;row.appendChild(c);}
+  if(node.d){const d=document.createElement('div');d.className='mm-note';d.innerHTML=node.d;row.appendChild(d);}
+  wrap.appendChild(row);
+  if(kids.length){
+    const box=document.createElement('div');
+    box.className='mm-kids';
+    kids.forEach(k=>box.appendChild(dtBuild(k,level+1)));
+    wrap.appendChild(box);
+  }
+  if(kids.length||node.d) row.addEventListener('click',()=>wrap.classList.toggle('open'));
+  return wrap;
 }
 
-/* Master route */
-buildFlow('masterFlow','masterDetail',[
-  {label:'CO₂ + H₂O + light', detail:'<b>Photosynthesis</b> fixes carbon dioxide and water using sunlight, producing simple carbohydrates — the starting material for every biosynthetic pathway.'},
-  {label:'Carbohydrates', detail:'Carbohydrates feed into two primary metabolic routes: the <b>pentose phosphate pathway</b> and <b>glycolysis</b>.'},
-  {label:'Glycolysis', sub:'→ PEP → Acetyl-CoA', detail:'Glycolysis converts carbohydrates to <b>phosphoenolpyruvate (PEP)</b> and then <b>pyruvic acid</b>, which is converted to <b>Acetyl-CoA</b> — the entry point of the acetate–mevalonate (isoprenoid) pathway.'},
-  {label:'Pentose phosphate pathway', sub:'→ Erythrose-4-P', detail:'This pathway supplies <b>erythrose-4-phosphate</b>, which combines with PEP to enter the <b>shikimic acid pathway</b>.'},
-  {label:'Shikimic acid pathway', sub:'aromatic route', detail:'Produces the <b>aromatic amino acids</b> (phenylalanine, tyrosine, tryptophan) — precursors of flavonoids, tannins, coumarins, and alkaloids.'},
-  {label:'Acetate pathway', sub:'isoprenoid route', detail:'Acetyl-CoA is converted into <b>mevalonic acid</b> and the <b>isoprene unit</b>, the building block of terpenoids, steroids and volatile oils.'}
-]);
+const diagrams = [
+ { id:'d1', type:'CONCEPT MAP', title:'Master route: from photosynthesis to secondary metabolites',
+   purpose:'How carbohydrates feed the two pathways and where each class of product comes from.',
+   flow:[
+   {label:'CO₂ + H₂O + sunlight', kind:'main', desc:'Inputs of <b>photosynthesis</b>, which produces carbohydrates.'},
+   {label:'Carbohydrates', kind:'inter', via:'photosynthesis', desc:'Primary metabolites. They feed two routes: the <b>pentose phosphate pathway</b> and <b>glycolysis</b>.',
+    branchVia:'feeds', branches:[
+     {title:'AROMATIC LANE', steps:[
+       {label:'Pentose phosphate pathway', kind:'path', desc:'Supplies erythrose-4-phosphate for the shikimic acid pathway.'},
+       {label:'Erythrose-4-phosphate', kind:'inter', desc:'Starting point of the shikimic acid pathway together with PEP from glycolysis.'},
+       {label:'Shikimic acid pathway', kind:'path', via:'leads to', desc:'Biosynthesis of <b>aromatic</b> active compounds.',
+        branchVia:'gives', branches:[
+          {steps:[{label:'Flavonoids', kind:'result'},{label:'Volatile oils', kind:'result', via:'and'}]},
+          {steps:[{label:'Aromatic amino acids', kind:'inter', desc:'Phenylalanine, tyrosine and tryptophan.'},{label:'Alkaloids', kind:'result', via:'leads to'}]}
+        ]}
+     ]},
+     {title:'ALIPHATIC LANE', steps:[
+       {label:'Glycolysis', kind:'path'},
+       {label:'Phosphoenolpyruvate (PEP)', kind:'inter', desc:'Also enters the shikimic acid pathway (aromatic lane).'},
+       {label:'Pyruvic acid', kind:'inter'},
+       {label:'Acetyl CoA', kind:'inter', desc:'Entry point of the acetate–mevalonate pathway.',
+        branchVia:'gives', branches:[
+          {steps:[
+            {label:'Isoprenoid (acetate) pathway', kind:'path'},
+            {label:'Mevalonic acid / Isoprene unit', kind:'inter', via:'forms'},
+            {label:'Terpenoids · Steroids · Volatile oils', kind:'result', via:'leads to'}
+          ]},
+          {steps:[{label:'Aliphatic amino acids', kind:'inter'},{label:'Alkaloids', kind:'result', via:'leads to'}]}
+        ]}
+     ]}
+    ]}
+ ]},
 
-/* Shikimate pathway detailed */
-buildFlow('shikimateFlow','shikimateDetail',[
-  {label:'PEP + Erythrose-4-P', detail:'Phosphoenolpyruvic acid (from glycolysis) condenses with erythrose-4-phosphate (from the pentose phosphate pathway) to give <b>2-keto-3-deoxy-7-phospho-D-glucoheptonic acid</b>.'},
-  {label:'3-Dehydroquinic acid', detail:'Formed by <b>cyclization and removal of the phosphate group</b>.'},
-  {label:'3-Dehydroshikimic acid', detail:'Formed by <b>dehydration</b> of 3-dehydroquinic acid.'},
-  {label:'Shikimic acid', detail:'Formed by <b>hydrogenation</b> — the keto group of 3-dehydroshikimic acid is replaced by an OH group.'},
-  {label:'Shikimic acid-3-phosphate', detail:'Formed by <b>phosphorylation</b> of shikimic acid.'},
-  {label:'Chorismic acid', detail:'Formed by addition of another PEP unit with loss of water (<b>−H₂O</b>). Chorismic acid is the <b>most important intermediate</b> — the branch point of the pathway.'}
-]);
+ { id:'d2', type:'CLASSIFICATION TREE', title:'Classification of secondary metabolites',
+   purpose:'Classes, aromatic vs. aliphatic nature, pathway and examples. Tap a branch to open it.',
+   tree:{ n:'Secondary metabolites', d:'Micro molecules with lower molecular weight, produced in small quantities, unique to different plant species.', c:[
+     {n:'Classes', via:'classified into', c:[
+       {n:'Alkaloids'},{n:'Flavonoids'},{n:'Glycosides'},{n:'Saponins'},{n:'Tannins'},
+       {n:'Structures shown', via:'example of', d:'Digoxin, Caffeine, Ephedrine, Coniine'}
+     ]},
+     {n:'By chemical nature', via:'divided into', c:[
+       {n:'Aromatic active compounds', c:[
+         {n:'Examples: Morphine, Hydroxychloroquine', via:'example of'},
+         {n:'Shikimic acid pathway', via:'formed by'},
+         {n:'Products: aromatic amino acids, tannins, flavonoids, coumarins and others'}
+       ]},
+       {n:'Aliphatic (nonaromatic) active compounds', c:[
+         {n:'Examples: Digoxin, Coniine', via:'example of'},
+         {n:'Acetate–mevalonic acid pathway', via:'formed by'},
+         {n:'Terpenoids and steroids', via:'includes', c:[
+           {n:'Monoterpenes shown', d:'C10 · 2 isoprene units', c:[
+             {n:'Acyclic', c:[
+               {n:'Hydrocarbons: Myrcene, Ocimene'},
+               {n:'Oxygenated: Citronellal, Linalool'}
+             ]},
+             {n:'Monocyclic', c:[
+               {n:'Hydrocarbons: Terpinolene, Phellandrene'},
+               {n:'Oxygenated: Carvone, Thymol'}
+             ]}
+           ]}
+         ]}
+       ]},
+       {n:'Mixed pathway', d:'Derived from the shikimate and mevalonate pathways.'}
+     ]}
+   ]}
+ },
 
-buildFlow('branch1Flow','branchDetail',[
-  {label:'Anthranilic acid', detail:'Chorismic acid is converted to anthranilic acid.'},
-  {label:'+ Phosphoribosyl-PP, Serine', detail:'Anthranilic acid reacts with phosphoribosyl pyrophosphate, then with serine.'},
-  {label:'Tryptophan', detail:'The final aromatic amino acid product of Branch 1.'}
-]);
-buildFlow('branch2Flow','branchDetail',[
-  {label:'Prephenic acid', detail:'Formed from chorismic acid by <b>shifting rearrangement</b>. It is the <b>last non-aromatic compound</b> in the sequence, and is aromatized in two ways.'},
-  {label:'Phenylpyruvic acid', sub:'dehydration + decarboxylation', detail:'One route: dehydration and decarboxylation of prephenic acid gives phenylpyruvic acid, the direct precursor of <b>phenylalanine</b>.'},
-  {label:'p-OH-Phenylpyruvic acid', sub:'dehydrogenation + decarboxylation', detail:'The other route: dehydrogenation and decarboxylation of prephenic acid gives p-hydroxyphenylpyruvic acid, the precursor of <b>tyrosine</b>.'},
-  {label:'Phenylalanine / Tyrosine', detail:'Both amino acids are produced by <b>reductive amination</b> of their respective pyruvic acid precursors.'}
-]);
+ { id:'d3', type:'FLOWCHART', title:'Shikimic acid pathway (aromatic route)',
+   purpose:'Sequence from PEP + erythrose-4-phosphate to chorismic acid. Tap a step to light up the path so far.',
+   flow:[
+   {label:'PEP + Erythrose-4-phosphate', kind:'main', sub:'from glycolysis + pentose phosphate pathway', desc:'Simple carbohydrates (primary): phosphoenolpyruvic acid from glycolysis and erythrose-4-phosphate from the pentose phosphate pathway.'},
+   {label:'2-Keto-3-deoxy-7-phospho-D-glucoheptonic acid', kind:'inter', desc:'First product of the sequence.'},
+   {label:'3-Dehydroquinic acid', kind:'inter', via:'Cyclization + removal of phosphate group'},
+   {label:'3-Dehydroshikimic acid', kind:'inter', via:'Dehydration'},
+   {label:'Shikimic acid', kind:'path', via:'Keto group replaced by OH (hydrogenation)', desc:'First isolated in <b>1885</b> from the Japanese flower <b>Shikimi</b>, which gave the pathway its name.'},
+   {label:'Shikimic acid-3-phosphate', kind:'inter', via:'Phosphorylation'},
+   {label:'Chorismic acid', kind:'warn', via:'+ PEP, −H₂O', desc:'The <b>most important intermediate</b> — the branch point (see next diagram).'}
+ ]},
 
-/* Acetate-mevalonate pathway */
-buildFlow('mevaFlow','mevaDetail',[
-  {label:'2 × Acetyl-CoA', detail:'Two molecules of Acetyl-CoA (from glucose via glycolysis and pyruvate) combine.'},
-  {label:'Acetoacetyl-CoA', detail:'Formed from the condensation of two Acetyl-CoA units.'},
-  {label:'HMG-CoA', sub:'HMG-CoA synthase', detail:'Acetoacetyl-CoA + Acetyl-CoA + H₂O, catalyzed by <b>HMG-CoA synthase</b>, gives [(3S)-3-hydroxy-3-methylglutaryl-CoA] — HMG-CoA.'},
-  {label:'Mevalonic acid', sub:'HMG-CoA reductase', detail:'HMG-CoA is reduced by <b>HMG-CoA reductase</b> — the enzyme blocked by <b>statin</b> drugs to lower cholesterol synthesis.'},
-  {label:'IPP', sub:'C5 · isoprene unit', detail:'Mevalonic acid is <b>phosphorylated then decarboxylated</b> to give isopentenyl pyrophosphate (IPP) — the fundamental <b>isoprene unit</b>. IPP is interconvertible with its isomer <b>DMAP</b> (dimethylallyl pyrophosphate), which has a reactive leaving group.'}
-]);
+ { id:'d4', type:'FLOWCHART · BRANCHING', title:'Chorismic acid branch point → aromatic amino acids',
+   purpose:'Where the pathway splits to give tryptophan, phenylalanine and tyrosine.',
+   flow:[
+   {label:'Chorismic acid', kind:'warn', desc:'Most important intermediate of the shikimic acid pathway.',
+    branchVia:'divided into', branches:[
+     {title:'BRANCH 1 → TRYPTOPHAN', steps:[
+       {label:'Anthranilic acid', kind:'inter', desc:'One branch of chorismic acid leads to anthranilic acid, then to tryptophan.'},
+       {label:'Tryptophan', kind:'result', via:'+ Phosphoribosyl pyrophosphate, + Serine'}
+     ]},
+     {title:'BRANCH 2 → PHE / TYR', steps:[
+       {label:'Prephenic acid', kind:'warn', via:'Shifting rearrangement', desc:'The <b>last nonaromatic compound</b> in the sequence. It is aromatized in 2 ways.',
+        branchVia:'aromatized in 2 ways', branches:[
+          {steps:[
+            {label:'Phenylpyruvic acid', kind:'inter', desc:'Direct precursor of phenylalanine.'},
+            {label:'Phenylalanine', kind:'result', via:'Reductive amination'}
+          ]},
+          {steps:[
+            {label:'p-Hydroxyphenylpyruvic acid', kind:'inter', desc:'Precursor of tyrosine.'},
+            {label:'Tyrosine', kind:'result', via:'Reductive amination'}
+          ]}
+        ]}
+     ]}
+    ]}
+ ]},
 
-/* Terpene ladder */
-buildFlow('ladderFlow','ladderDetail',[
-  {label:'IPP + IPP', sub:'2 isoprene units', detail:'Two C5 isoprene units combine.'},
-  {label:'Geranyl-PP (GPP)', sub:'C10', detail:'GPP is the precursor of <b>monoterpenes</b> (e.g. myrcene, linalool, thymol, carvone).'},
-  {label:'Farnesyl-PP (FPP)', sub:'C15', detail:'GPP + IPP → FPP, the precursor of <b>sesquiterpenes</b> and of diterpenes/steroids.'},
-  {label:'Squalene', sub:'C30', detail:'2 × FPP combine to give squalene, the direct precursor of <b>steroids and triterpenoids</b> — oxidation and cyclization form the cyclopentanophenanthrene skeleton of <b>cholesterol</b>.'},
-  {label:'Geranylgeranyl-PP', sub:'C20', detail:'FPP + IPP → GGPP, the precursor of <b>diterpenes</b> (4 isoprene units).'}
-]);
+ { id:'d5', type:'FLOWCHART', title:'Acetate–mevalonate pathway (isoprenoid route)',
+   purpose:'From acetyl CoA to the isoprene unit. The red arrow marks the step blocked by statins.',
+   flow:[
+   {label:'Glucose', kind:'main'},
+   {label:'Acetyl CoA + Acetyl CoA', kind:'inter', desc:'Two acetyl CoA units combine.'},
+   {label:'Aceto-acetyl CoA', kind:'inter', via:'combine'},
+   {label:'HMG-CoA', kind:'inter', sub:'(3S)-3-Hydroxy-3-methylglutaryl CoA', via:'+ H₂O + Acetyl CoA · HMG-CoA synthase'},
+   {label:'Mevalonic acid', kind:'path', via:'Reduction · HMG-CoA reductase', viaKind:'warn', desc:'HMG-CoA reductase is the enzyme inhibited by statins.'},
+   {label:'IPP · Isopentenyl pyrophosphate', kind:'result', sub:'C5 · isoprene unit', via:'Phosphorylation → Decarboxylation', desc:'Isopentenyl diphosphate (5C) — the isoprene unit.'},
+   {label:'DMAP · Dimethylallyl pyrophosphate', kind:'result', sub:'C5', via:'⇌ interconvertible', desc:'Has a good leaving group (pyrophosphate) and is very reactive toward nucleophilic substitution at this position. IPP and DMAP are the basic precursors of terpenoids.'}
+ ]},
+
+ { id:'d6', type:'FLOWCHART · BRANCHING', title:'IPP builds the terpene ladder',
+   purpose:'Chain length (C10 → C15 → C20 / C30) and the terpene class at each level.',
+   flow:[
+   {label:'IPP (C5) + IPP (C5)', kind:'main', desc:'IPP keeps substituting the pyrophosphate (pp) group to form terpenoids and steroids.'},
+   {label:'Geranyl pyrophosphate (GPP)', sub:'C10 · Monoterpenes · 2 isoprene', kind:'result', via:'IPP + IPP'},
+   {label:'Farnesyl pyrophosphate (FPP)', sub:'C15 · Sesquiterpenes · 3 isoprene', kind:'result', via:'GPP + IPP',
+    desc:'The lecture text lists FPP as “sesquiterpenes and diterpenes”; the lecture diagram assigns FPP to sesquiterpenes (3 isoprene) and GGPP to diterpenes (4 isoprene).',
+    branchVia:'FPP can go two ways', branches:[
+     {title:'+ IPP → DITERPENES', steps:[
+       {label:'Geranylgeranyl pyrophosphate (GGPP)', sub:'C20 · Diterpenes · 4 isoprene', kind:'result', via:'FPP + IPP'}
+     ]},
+     {title:'2 × FPP → STEROIDS', steps:[
+       {label:'Squalene (a terpene)', sub:'C30', kind:'path', via:'FPP + FPP (C15 + C15)', desc:'Direct precursor of steroids.'},
+       {label:'Steroids / triterpenoids', kind:'result', via:'Oxidation + cyclization', desc:'Forms cyclo-penta-phenanthrene, the basic skeleton of cholesterol and other steroids/triterpenoids.'}
+     ]}
+    ]}
+ ]},
+
+ { id:'d7', type:'FLOWCHART · CLINICAL', title:'How statins inhibit cholesterol formation',
+   purpose:'Antilipidemic drugs block HMG-CoA reductase, so the downstream chain to cholesterol is not formed.',
+   flow:[
+   {label:'Acetyl-CoA', kind:'main'},
+   {label:'HMG-CoA', kind:'inter', via:'→'},
+   {label:'Mevalonate', kind:'path', via:'HMG-CoA reductase ⛔ inhibited by Statins', viaKind:'warn', desc:'<b>Statins</b> inhibit HMG-CoA reductase.'},
+   {label:'Isopentenyl-PP', kind:'inter'},
+   {label:'Geranyl-PP', kind:'inter'},
+   {label:'Farnesyl-PP', kind:'inter'},
+   {label:'Squalene', kind:'inter'},
+   {label:'Cholesterol', kind:'warn', desc:'End product of the chain; its formation is inhibited by antilipidemic drugs (statins).'}
+ ]}
+];
+
+const dgListEl = document.getElementById('dgList');
+diagrams.forEach((d,i)=>{
+  const block=document.createElement('div');
+  block.className='diagram-block';
+  block.id=d.id;
+  const head=document.createElement('div');
+  head.className='dg-head';
+  head.innerHTML='<h3>'+String(i+1).padStart(2,'0')+' · '+d.title+'</h3><span class="dg-type">'+d.type+'</span>';
+  block.appendChild(head);
+  const hint=document.createElement('div');
+  hint.className='diagram-hint';
+  hint.textContent=d.purpose;
+  block.appendChild(hint);
+  const tb=document.createElement('div');
+  tb.className='dg-toolbar';
+  const bAll=document.createElement('button');bAll.className='mm-btn';bAll.textContent='Show all details';
+  const bReset=document.createElement('button');bReset.className='mm-btn';bReset.textContent='Reset view';
+  tb.appendChild(bAll);tb.appendChild(bReset);
+  block.appendChild(tb);
+  const body=document.createElement('div');
+  let root=null;
+  if(d.tree){
+    body.className='dgtree';
+    root=dtBuild(d.tree,1);
+    root.classList.add('open');
+    body.appendChild(root);
+  } else {
+    body.appendChild(dgFlow(d.flow));
+  }
+  block.appendChild(body);
+  bAll.addEventListener('click',()=>{
+    body.querySelectorAll('.dg-node,.mm-node').forEach(n=>n.classList.add('open'));
+  });
+  bReset.addEventListener('click',()=>{
+    body.querySelectorAll('.dg-node,.mm-node,.dg-edge').forEach(n=>n.classList.remove('open','active','done'));
+    if(root) root.classList.add('open');
+  });
+  dgListEl.appendChild(block);
+});
 
 /* ============================================================
    MINI MAP
 ============================================================ */
-const mapClusters = [
-  { title:'FOUNDATIONS', nodes:[
-    {label:'Primary metabolites', text:'<h4>Primary metabolites</h4><p>High-molecular-weight macromolecules (proteins, polysaccharides, vitamins) produced in <b>large quantities</b>.</p><ul><li>Essential for growth, development, reproduction</li><li>Same across all plant species</li></ul>'},
-    {label:'Secondary metabolites', text:'<h4>Secondary metabolites</h4><p>Low-molecular-weight micromolecules produced in <b>small quantities</b>, unique to each plant species.</p><ul><li>Play a specific role in the plant</li><li>Responsible for pharmaceutical and medicinal uses</li><li>Examples: antibiotics, drugs, pigments, medicinal compounds</li></ul>'},
-    {label:'5 classes', text:'<h4>Classes of secondary metabolites</h4><ul><li>Alkaloids</li><li>Flavonoids</li><li>Glycosides</li><li>Saponins</li><li>Tannins</li></ul><p>Structural examples covered: Digoxin, Caffeine, Ephedrine, Coniine.</p>'},
-    {label:'Aromatic vs. aliphatic', text:'<h4>Aromatic vs. aliphatic secondary metabolites</h4><p><b>Aliphatic</b> examples: Digoxin, Coniine.</p><p><b>Aromatic</b> examples: Morphine, Hydroxychloroquine.</p><p>Biosynthesis of secondary active compounds usually <b>starts with primary metabolites</b>.</p>'}
+const mapTree = {
+  n:'Biosynthetic Pathways of Secondary Metabolites',
+  c:[
+  {n:'Metabolites in the plant', r:'contains', c:[
+    {n:'Primary metabolites', c:[
+      {n:'High-MW macromolecules', t:'proteins, polysaccharides, vitamins'},
+      {n:'Produced in large quantities'},
+      {n:'Essential for the plant', t:'directly involved in growth, development, reproduction'},
+      {n:'Present in all plants', t:'same in all plants'},
+      {n:'Examples', r:'example of', t:'proteins, polysaccharides, nucleotides, vitamins'}
+    ]},
+    {n:'Secondary metabolites', c:[
+      {n:'Low-MW micromolecules'},
+      {n:'Produced in small quantities'},
+      {n:'Play a specific role in the plant'},
+      {n:'Responsible for pharmaceutical and medicinal uses'},
+      {n:'Unique to different plant species'},
+      {n:'Examples', r:'example of', t:'antibiotics, drugs, pigments, medicinal compounds'}
+    ]},
+    {n:'Relationship', c:[
+      {n:'Biosynthesis of secondary active compounds usually starts with primary metabolites'}
+    ]}
   ]},
-  { title:'THE TWO PATHWAYS', nodes:[
-    {label:'Shikimic acid pathway', text:'<h4>Shikimic acid pathway</h4><p>Produces <b>aromatic</b> secondary metabolites (aromatic active compounds).</p><p>Named after the Japanese flower <b>Shikimi</b>, where shikimic acid was first isolated in <b>1885</b>.</p><p>Present in plants, fungi, and bacteria — <b>absent in animals</b>, so aromatic amino acids are essential dietary nutrients for animals.</p>'},
-    {label:'Acetate–mevalonate pathway', text:'<h4>Acetate–mevalonate pathway</h4><p>= Isoprenoid biosynthesis. Produces <b>aliphatic</b> secondary metabolites (terpenoids and steroids).</p><p>Forms the <b>isoprenoid unit</b>, the basic building block of terpenoid and steroid biosynthesis.</p>'},
-    {label:'Mixed pathway', text:'<h4>Mixed pathway</h4><p>Some secondary metabolites are derived from <b>both</b> the shikimate and mevalonate pathways combined.</p>'}
-  ]},
-  { title:'SHIKIMATE PATHWAY DETAIL', nodes:[
-    {label:'Starting materials', text:'<h4>Starting materials</h4><p>Simple carbohydrates (primary metabolites) supply:</p><ul><li><b>Phosphoenolpyruvic acid (PEP)</b> — from glycolysis</li><li><b>Erythrose-4-phosphate</b> — from the pentose phosphate pathway</li></ul>'},
-    {label:'Chorismic acid', text:'<h4>Chorismic acid</h4><p>The <b>most important intermediate</b> of the shikimate pathway — the branch point.</p><ul><li>Branch 1 → anthranilic acid → <b>Tryptophan</b></li><li>Branch 2 → prephenic acid → <b>Phenylalanine</b> or <b>Tyrosine</b></li></ul>'},
-    {label:'Aromatic amino acids', text:'<h4>Aromatic amino acids</h4><p>Phenylalanine, tyrosine and tryptophan are the critical products of the shikimate pathway.</p><p>They are synthetic precursors for many medicinal compounds — including tannins, flavonoids, and coumarins.</p>'}
-  ]},
-  { title:'ACETATE–MEVALONATE DETAIL', nodes:[
-    {label:'HMG-CoA', text:'<h4>HMG-CoA</h4><p>Acetoacetyl-CoA + Acetyl-CoA + H₂O, via <b>HMG-CoA synthase</b>, forms [(3S)-3-hydroxy-3-methylglutaryl-CoA].</p>'},
-    {label:'Statins & cholesterol', text:'<h4>Statins & cholesterol</h4><p>HMG-CoA reductase converts HMG-CoA into mevalonate. <b>Statin</b> drugs inhibit this enzyme, blocking the entire downstream chain: mevalonate → isopentenyl-PP → geranyl-PP → farnesyl-PP → squalene → <b>cholesterol</b>.</p>'},
-    {label:'Isoprenoid units', text:'<h4>Isoprenoid units</h4><p><b>IPP</b> (isopentenyl pyrophosphate, C5) is the fundamental isoprene unit, interconvertible with its isomer <b>DMAP</b> (dimethylallyl pyrophosphate).</p>'},
-    {label:'Terpene classes', text:'<h4>Terpene classes by isoprene count</h4><ul><li>Monoterpenes — C10 (2 units) — Geranyl-PP</li><li>Sesquiterpenes — C15 (3 units) — Farnesyl-PP</li><li>Diterpenes — C20 (4 units) — Geranylgeranyl-PP</li><li>Triterpenes/steroids — C30 — Squalene</li></ul>'}
-  ]},
-  { title:'DRUGS FROM SECONDARY METABOLITES', nodes:[
-    {label:'Examples of drugs', text:'<h4>Drugs derived from secondary metabolites</h4><ul><li>Digoxin (cardiac glycoside)</li><li>Buscopan</li><li>Cafergot</li><li>Vincristine (alkaloid)</li><li>Hydroxychloroquine</li><li>MEBO (herbal ointment)</li></ul>'}
-  ]}
-];
 
-const mapNodesEl = document.getElementById('mapNodes');
-const mapDisplayEl = document.getElementById('mapDisplay');
-mapClusters.forEach(cluster=>{
-  const clusterDiv = document.createElement('div');
-  clusterDiv.className='map-cluster';
-  const title = document.createElement('div');
-  title.className='map-cluster-title';
-  title.textContent = cluster.title;
-  clusterDiv.appendChild(title);
-  const rowDiv = document.createElement('div');
-  rowDiv.className='map-node-row';
-  cluster.nodes.forEach(node=>{
-    const el = document.createElement('div');
-    el.className='map-node clickable';
-    el.textContent = node.label;
-    el.addEventListener('click',()=>{
-      document.querySelectorAll('.map-node').forEach(n=>n.classList.remove('active'));
-      el.classList.add('active');
-      mapDisplayEl.innerHTML = node.text;
-    });
-    rowDiv.appendChild(el);
-  });
-  clusterDiv.appendChild(rowDiv);
-  mapNodesEl.appendChild(clusterDiv);
+  {n:'Classes of secondary metabolites', r:'classified into', c:[
+    {n:'Alkaloids'},{n:'Flavonoids'},{n:'Glycosides'},{n:'Saponins'},{n:'Tannins'},
+    {n:'Structures shown', r:'example of', t:'Digoxin, Caffeine, Ephedrine, Coniine'}
+  ]},
+
+  {n:'Chemical nature', r:'divided into', c:[
+    {n:'Aliphatic (nonaromatic) active compounds', c:[
+      {n:'Examples: Digoxin, Coniine'},
+      {n:'Pathway: Acetate–mevalonic acid', r:'leads to'}
+    ]},
+    {n:'Aromatic active compounds', c:[
+      {n:'Examples: Morphine, Hydroxychloroquine'},
+      {n:'Pathway: Shikimic acid', r:'leads to'}
+    ]},
+    {n:'Mixed pathway', t:'derived from shikimate and mevalonate pathways'}
+  ]},
+
+  {n:'Shikimic acid pathway', r:'aromatic route', c:[
+    {n:'Origin', c:[
+      {n:'Named after the Japanese flower Shikimi'},
+      {n:'Shikimic acid first isolated in 1885'}
+    ]},
+    {n:'Importance', c:[
+      {n:'Most medicinally active secondary metabolites are aromatic'},
+      {n:'Produces Phenylalanine, Tyrosine, Tryptophan', t:'precursors of many medicinal compounds'},
+      {n:'Precursor of aromatic amino acids, tannins, flavonoids, coumarins and others'}
+    ]},
+    {n:'Occurrence', c:[
+      {n:'Plants, fungi, bacteria'},
+      {n:'Absent in animals', t:'aromatic amino acids are essential nutrients in animal diet'}
+    ]},
+    {n:'Start and end', c:[
+      {n:'Starts: simple carbohydrates (primary)', t:'from glycolysis (PEP) and pentose phosphate pathway (Erythrose-4-phosphate)'},
+      {n:'Ends: aromatic amino acids', r:'leads to', t:'aromatic active compounds (secondary)'}
+    ]},
+    {n:'Stages', c:[
+      {n:'1. PEP + Erythrose-4-phosphate', t:'→ 2-Keto-3-deoxy-7-phospho-D-glucoheptonic acid'},
+      {n:'2. Cyclization + removal of phosphate', r:'followed by', t:'→ 3-Dehydroquinic acid'},
+      {n:'3. Dehydration', r:'followed by', t:'→ 3-Dehydroshikimic acid'},
+      {n:'4. Keto → OH (hydrogenation)', r:'followed by', t:'→ Shikimic acid'},
+      {n:'5. Phosphorylation', r:'followed by', t:'→ Shikimic acid-3-phosphate'},
+      {n:'6. + PEP, −H₂O', r:'followed by', t:'→ Chorismic acid (most important intermediate)'}
+    ]},
+    {n:'Chorismic acid branches', r:'divided into', c:[
+      {n:'Branch 1: Tryptophan', c:[
+        {n:'Chorismic acid → Anthranilic acid', t:'amination and shifting'},
+        {n:'+ Phosphoribosyl pyrophosphate, + Serine', r:'leads to', t:'→ Tryptophan'}
+      ]},
+      {n:'Branch 2: Prephenic acid', t:'last nonaromatic compound; formed by shifting rearrangement', c:[
+        {n:'Route 1: dehydration + decarboxylation', t:'−H₂O, −CO₂ → Phenylpyruvic acid → reductive amination → Phenylalanine'},
+        {n:'Route 2: dehydrogenation + decarboxylation', t:'−CO₂ → p-Hydroxyphenylpyruvic acid → reductive amination → Tyrosine'}
+      ]}
+    ]}
+  ]},
+
+  {n:'Acetate–mevalonate pathway', r:'aliphatic route', t:'also called isoprenoid biosynthesis', c:[
+    {n:'Role', c:[
+      {n:'Biosynthesizes aliphatic compounds: terpenoids and steroids'},
+      {n:'Forms isoprenoid units', t:'building blocks of terpenoids and steroids'}
+    ]},
+    {n:'Stages', c:[
+      {n:'1. Glucose → 2 Acetyl CoA', r:'followed by', t:'→ Aceto-acetyl CoA'},
+      {n:'2. + H₂O + Acetyl CoA (HMG-CoA synthase)', r:'followed by', t:'→ HMG-CoA [(3S)-3-Hydroxy-3-methylglutaryl CoA]'},
+      {n:'3. HMG-CoA reductase (reduction)', r:'followed by', t:'→ Mevalonic acid'},
+      {n:'4. Phosphorylation, then decarboxylation', r:'followed by', t:'→ IPP (C5, isoprene unit)'}
+    ]},
+    {n:'IPP and DMAP', c:[
+      {n:'IPP ⇌ DMAP', t:'interconvertible isomers'},
+      {n:'DMAP (C5): good leaving group (pyrophosphate)', t:'very reactive toward nucleophilic substitution'},
+      {n:'IPP keeps substituting the pp group', r:'leads to', t:'terpenoids and steroids'}
+    ]},
+    {n:'Terpene chain-length ladder', r:'followed by', c:[
+      {n:'IPP + IPP → Geranyl-PP (C10)', t:'Monoterpenes · 2 isoprene'},
+      {n:'GPP + IPP → Farnesyl-PP (C15)', t:'Sesquiterpenes · 3 isoprene'},
+      {n:'FPP + IPP → Geranylgeranyl-PP (C20)', t:'Diterpenes · 4 isoprene'},
+      {n:'2 FPP → Squalene (C30)', t:'direct precursor of steroids / triterpenoids; oxidation + cyclization → cyclo-penta-phenanthrene, basic skeleton of cholesterol'}
+    ]},
+    {n:'Aliphatic compounds shown', r:'example of', c:[
+      {n:'Monoterpenes: acyclic', t:'hydrocarbons: Myrcene, Ocimene · oxygenated: Citronellal, Linalool'},
+      {n:'Monoterpenes: monocyclic', t:'hydrocarbons: Terpinolene, Phellandrene · oxygenated: Carvone, Thymol'},
+      {n:'Steroid, Digoxin, volatile (essential) oil'}
+    ]}
+  ]},
+
+  {n:'Master route', r:'part of', t:'CO₂ + H₂O + sunlight → photosynthesis → carbohydrates', c:[
+    {n:'Pentose phosphate pathway → Erythrose-4-phosphate', c:[
+      {n:'→ Shikimic acid pathway', c:[
+        {n:'Flavonoids, volatile oils'},
+        {n:'Aromatic amino acids → Alkaloids'}
+      ]}
+    ]},
+    {n:'Glycolysis → Phosphoenolpyruvate → Pyruvic acid → Acetyl CoA', c:[
+      {n:'→ Mevalonic acid / isoprene unit', t:'isoprenoid (acetate) pathway → terpenoids, steroids, volatile oils'},
+      {n:'→ Aliphatic amino acids → Alkaloids'}
+    ]}
+  ]},
+
+  {n:'Clinical / practical significance', c:[
+    {n:'Statins (antilipidemic drugs)', c:[
+      {n:'Inhibit HMG-CoA reductase', t:'blocks cholesterol formation'},
+      {n:'Chain: Acetyl-CoA → HMG-CoA → Mevalonate → Isopentenyl-PP → Geranyl-PP → Farnesyl-PP → Squalene → Cholesterol'}
+    ]},
+    {n:'Drugs from natural products', r:'example of', t:'Digoxin, Buscopan, Cafergot, Vincristine, Hydroxychloroquine, Mebo (β-sitosterol ointment)'},
+    {n:'Animals lack shikimate pathway', t:'must obtain Phe, Tyr, Trp from diet'}
+  ]}
+  ]
+};
+
+const mmTreeEl = document.getElementById('mmTree');
+function mmBuild(node, level){
+  const wrap = document.createElement('div');
+  wrap.className = 'mm-node mm-l' + Math.min(level,4);
+  const kids = node.c || [];
+  const row = document.createElement('div');
+  row.className = 'mm-row' + (kids.length ? ' has-kids' : '');
+  const icon = document.createElement('span');
+  icon.className = kids.length ? 'mm-chev' : 'mm-dot';
+  if(kids.length) icon.textContent = '▶';
+  row.appendChild(icon);
+  const lab = document.createElement('span');
+  lab.className = 'mm-label';
+  lab.textContent = node.n;
+  row.appendChild(lab);
+  if(node.r){
+    const rel = document.createElement('span');
+    rel.className = 'mm-rel';
+    rel.textContent = node.r;
+    row.appendChild(rel);
+  }
+  if(kids.length){
+    const cnt = document.createElement('span');
+    cnt.className = 'mm-count';
+    cnt.textContent = '+' + kids.length;
+    row.appendChild(cnt);
+  }
+  if(node.t){
+    const note = document.createElement('div');
+    note.className = 'mm-note';
+    note.textContent = node.t;
+    row.appendChild(note);
+  }
+  wrap.appendChild(row);
+  if(kids.length){
+    const box = document.createElement('div');
+    box.className = 'mm-kids';
+    kids.forEach(k => box.appendChild(mmBuild(k, level+1)));
+    wrap.appendChild(box);
+    row.addEventListener('click', () => wrap.classList.toggle('open'));
+  }
+  return wrap;
+}
+const mmRoot = mmBuild(mapTree, 1);
+mmRoot.classList.add('open');
+mmTreeEl.appendChild(mmRoot);
+document.getElementById('mmExpand').addEventListener('click', () => {
+  mmTreeEl.querySelectorAll('.mm-node').forEach(n => { if(n.querySelector(':scope > .mm-kids')) n.classList.add('open'); });
+});
+document.getElementById('mmCollapse').addEventListener('click', () => {
+  mmTreeEl.querySelectorAll('.mm-node').forEach(n => n.classList.remove('open'));
+  mmRoot.classList.add('open');
 });
 
 /* ============================================================
@@ -838,257 +1359,307 @@ const flashcardsData = {
   "easy": [
     {
       "tag": "DEFINITION",
-      "term": "What are primary metabolites?",
-      "answer": "High-molecular-weight macromolecules such as proteins, polysaccharides, and vitamins."
+      "term": "Define primary metabolites.",
+      "answer": "Macromolecules with high molecular weight (e.g., proteins, polysaccharides, vitamins), produced in large quantities and essential for the plant.",
+      "explanation": "They are directly involved in growth, development and reproduction, and are present in all plants."
     },
     {
-      "tag": "QUANTITY",
-      "term": "In what quantity are primary metabolites generally produced?",
-      "answer": "They are produced in large quantities."
-    },
-    {
-      "tag": "QUANTITY",
-      "term": "In what quantity are secondary metabolites generally produced?",
-      "answer": "They are produced in small quantities."
-    },
-    {
-      "tag": "IMPORTANCE",
-      "term": "What is the main biological importance of primary metabolites?",
-      "answer": "They are essential for the plant and directly involved in growth, development, and reproduction."
-    },
-    {
-      "tag": "IMPORTANCE",
-      "term": "What is the importance of secondary metabolites?",
-      "answer": "They play specific roles in plants and are responsible for pharmaceutical and medicinal uses."
+      "tag": "DEFINITION",
+      "term": "Define secondary metabolites.",
+      "answer": "Micro molecules with lower molecular weight, produced in small quantities, playing a specific role in the plant.",
+      "explanation": "They are responsible for the pharmaceutical and medicinal uses of the plant and are unique to different plant species."
     },
     {
       "tag": "EXAMPLES",
-      "term": "Give four examples of secondary metabolites mentioned in the lecture.",
-      "answer": "Antibiotics, drugs, pigments, and medicinal compounds."
-    },
-    {
-      "tag": "CLASSES",
-      "term": "Give examples of secondary-metabolite classes listed in the lecture.",
-      "answer": "Alkaloids, flavonoids, glycosides, saponins, and tannins."
+      "term": "Give the examples of primary metabolites listed in the lecture.",
+      "answer": "• Proteins<br>• Polysaccharides<br>• Nucleotides<br>• Vitamins",
+      "explanation": "These are common to all plants and essential for the plant itself."
     },
     {
       "tag": "EXAMPLES",
-      "term": "Give examples of secondary metabolites specifically mentioned.",
-      "answer": "Digoxin, caffeine, ephedrine, and coniine."
+      "term": "Give the examples of secondary metabolites listed in the lecture.",
+      "answer": "• Antibiotics<br>• Drugs<br>• Pigments<br>• Medicinal compounds",
+      "explanation": "Secondary metabolites are the source of the plant's medicinal value."
     },
     {
       "tag": "CLASSIFICATION",
-      "term": "Into what two broad types can secondary metabolites be classified according to structure?",
-      "answer": "Aromatic and aliphatic."
+      "term": "Which classes of secondary metabolites are listed in the lecture?",
+      "answer": "• Alkaloids<br>• Flavonoids<br>• Glycosides<br>• Saponins<br>• Tannins",
+      "explanation": "The lecture illustrates them with digoxin, caffeine, ephedrine and coniine."
+    },
+    {
+      "tag": "EXAMPLES",
+      "term": "Which natural-product drugs are shown as examples of secondary metabolites?",
+      "answer": "• Digoxin<br>• Buscopan<br>• Cafergot<br>• Vincristine<br>• Hydroxychloroquine<br>• Mebo (ointment)",
+      "explanation": "They are shown as drugs obtained from natural products (secondary metabolites)."
     },
     {
       "tag": "CLASSIFICATION",
-      "term": "Give an aromatic example and an aliphatic example from the lecture.",
-      "answer": "Morphine is aromatic, while digoxin is aliphatic."
+      "term": "Which compounds are shown as aliphatic and which as aromatic secondary metabolites?",
+      "answer": "• Aliphatic: digoxin, coniine<br>• Aromatic: morphine, hydroxychloroquine",
+      "explanation": "Secondary metabolites can be aromatic or aliphatic; the aromatic ring is marked with an arrow in the slide."
     },
     {
-      "tag": "RULE",
-      "term": "What do the biosynthetic pathways of secondary metabolites usually start from?",
-      "answer": "Primary metabolites."
+      "tag": "PATHWAY",
+      "term": "Which pathway produces aromatic secondary metabolites?",
+      "answer": "The shikimic acid pathway.",
+      "explanation": "Aromatic (aromatic active) compounds come from the shikimic acid pathway."
     },
     {
-      "tag": "PATHWAYS",
-      "term": "What are the two major biosynthetic pathways presented in the lecture?",
-      "answer": "The shikimic acid pathway and the acetate–mevalonate pathway."
+      "tag": "PATHWAY",
+      "term": "Which pathway produces aliphatic (nonaromatic) secondary metabolites?",
+      "answer": "The acetate-mevalonic acid pathway.",
+      "explanation": "It biosynthesizes aliphatic active compounds (terpenoids and steroids)."
     },
     {
-      "tag": "PATHWAYS",
-      "term": "Which pathway produces aromatic active compounds?",
-      "answer": "The shikimic acid pathway."
+      "tag": "NAMES & DATES",
+      "term": "Where does the name 'shikimic acid pathway' come from, and when was shikimic acid first isolated?",
+      "answer": "From the Japanese flower Shikimi; shikimic acid was first isolated in 1885.",
+      "explanation": "The pathway is named after the plant from which the acid was first isolated."
     },
     {
-      "tag": "PATHWAYS",
-      "term": "Which pathway produces aliphatic active compounds such as terpenoids and steroids?",
-      "answer": "The acetate–mevalonate pathway."
+      "tag": "DEFINITION",
+      "term": "With what does the biosynthesis of secondary active compounds usually start?",
+      "answer": "With primary metabolites.",
+      "explanation": "Secondary compounds are built from primary metabolites such as simple carbohydrates."
     },
     {
-      "tag": "ORIGIN",
-      "term": "Where does the name “shikimic acid” come from?",
-      "answer": "From the Japanese flower Shikimi, from which shikimic acid was first isolated in 1885."
+      "tag": "EXAMPLES",
+      "term": "Name the three aromatic amino acids produced by the shikimic acid pathway.",
+      "answer": "• Phenylalanine<br>• Tyrosine<br>• Tryptophan",
+      "explanation": "They are the synthetic precursors of many medicinal compounds."
     },
     {
-      "tag": "AMINO ACIDS",
-      "term": "What are the three critical aromatic amino acids produced through the shikimic acid pathway?",
-      "answer": "Phenylalanine, tyrosine, and tryptophan."
+      "tag": "DISTRIBUTION",
+      "term": "In which organisms is the shikimic acid pathway present or absent?",
+      "answer": "• Present: plants, fungi and bacteria<br>• Absent: animals",
+      "explanation": "Because animals lack it, they cannot synthesize the three aromatic amino acids."
     },
     {
-      "tag": "PRODUCTS",
-      "term": "What other compounds are mentioned as biosynthetic products/precursors associated with the shikimate pathway?",
-      "answer": "Tannins, flavonoids, coumarins, and other medicinal compounds."
+      "tag": "PROCESS",
+      "term": "What is the starting point of the shikimic acid pathway?",
+      "answer": "Simple carbohydrates (primary) from glycolysis and the pentose phosphate pathway.",
+      "explanation": "Phospho-enol-pyruvic acid comes from glycolysis and erythrose 4-phosphate from the pentose phosphate pathway."
     },
     {
-      "tag": "ORGANISMS",
-      "term": "In which organisms is the shikimic acid pathway present?",
-      "answer": "Plants, fungi, and bacteria."
+      "tag": "PROCESS",
+      "term": "What does the shikimic acid pathway end with?",
+      "answer": "Aromatic amino acids, which form aromatic active compounds (secondary).",
+      "explanation": "It links primary carbohydrate metabolism to secondary aromatic compounds."
     },
     {
-      "tag": "NUTRITION",
-      "term": "Why are the three aromatic amino acids essential nutrients in animals according to the lecture?",
-      "answer": "Because animals lack the shikimic acid pathway and therefore cannot synthesize them."
+      "tag": "PROCESS",
+      "term": "Which compounds follow 2-keto-3-deoxy-7-phospho-D-glucoheptonic acid in the early shikimic acid pathway?",
+      "answer": "• Cyclization and removal of the phosphate group → 3-dehydroquinic acid<br>• Dehydration → 3-dehydroshikimic acid",
+      "explanation": "These are the first two steps shown after the seven-carbon phosphorylated intermediate."
     },
     {
-      "tag": "PRECURSORS",
-      "term": "What are the starting carbohydrates of the shikimic acid pathway derived from?",
-      "answer": "Glycolysis and the pentose phosphate pathway."
+      "tag": "PROCESS",
+      "term": "Which intermediate is the most important in the shikimic acid pathway?",
+      "answer": "Chorismic acid.",
+      "explanation": "It is formed from shikimic acid through phosphorylated intermediates and branches to tryptophan and prephenic acid."
     },
     {
-      "tag": "KEY INTERMEDIATE",
-      "term": "What is the most important intermediate of the shikimic acid pathway?",
-      "answer": "Chorismic acid."
+      "tag": "PROCESS",
+      "term": "Which compound is the last nonaromatic compound in the shikimic acid sequence?",
+      "answer": "Prephenic acid.",
+      "explanation": "After this compound, aromatization occurs to give the phenylalanine and tyrosine precursors."
     },
     {
-      "tag": "BRANCHES",
-      "term": "What are the two branches from chorismic acid described in the lecture?",
-      "answer": "One leads through anthranilic acid to tryptophan; the other leads to prephenic acid."
+      "tag": "PATHWAY",
+      "term": "What does the acetate-mevalonate pathway (isoprenoid biosynthesis) form?",
+      "answer": "The isoprenoid units, the building blocks of terpenoid and steroid biosynthesis.",
+      "explanation": "It biosynthesizes the aliphatic active compounds (terpenoids and steroids)."
     },
     {
-      "tag": "PREPHENIC ACID",
-      "term": "What is the first aromatization route of prephenic acid?",
-      "answer": "Dehydration and decarboxylation produce phenylpyruvic acid, the direct precursor of phenylalanine."
+      "tag": "DEFINITION",
+      "term": "What is isopentenyl pyrophosphate (IPP)?",
+      "answer": "A 5-carbon (5C) compound, also called isopentenyl diphosphate, representing the isoprene unit.",
+      "explanation": "It is the final product of the mevalonate route (with its isomer dimethylallyl pyrophosphate)."
     },
     {
-      "tag": "PREPHENIC ACID",
-      "term": "What is the second aromatization route of prephenic acid?",
-      "answer": "Dehydrogenation and decarboxylation produce p-hydroxyphenylpyruvic acid, the precursor of tyrosine."
+      "tag": "ENZYMES",
+      "term": "Which enzyme converts HMG-CoA to mevalonic acid, and what type of reaction is it?",
+      "answer": "HMG-CoA reductase (reduction).",
+      "explanation": "This is the step inhibited by statins."
     },
     {
-      "tag": "MEVALONATE",
-      "term": "What are the main products derived from IPP in the acetate–mevalonate pathway?",
-      "answer": "Terpenoids and steroids through formation of different isoprenoid units and intermediates."
+      "tag": "ENZYMES",
+      "term": "Which enzyme acts on aceto-acetyl CoA to form [(3S)-3-hydroxy-3-methylglutaryl CoA]?",
+      "answer": "HMG-CoA synthase.",
+      "explanation": "Aceto-acetyl CoA reacts with H2O and another acetyl CoA group to give HMG-CoA."
+    },
+    {
+      "tag": "CLASSIFICATION",
+      "term": "What is squalene?",
+      "answer": "A C30 terpene, formed from two farnesyl pyrophosphate molecules, and the direct precursor of steroids.",
+      "explanation": "It leads to cholesterol and other steroids/triterpenoids."
+    },
+    {
+      "tag": "CLASSIFICATION",
+      "term": "What are monoterpenes in terms of carbons and isoprene units?",
+      "answer": "C10 compounds derived from geranyl pyrophosphate, containing 2 isoprene units.",
+      "explanation": "Geranyl pyrophosphate is formed from IPP C5 + IPP C5."
+    },
+    {
+      "tag": "PROCESS",
+      "term": "What is the first intermediate formed when acetyl CoA combines with another acetyl CoA?",
+      "answer": "Aceto-acetyl CoA.",
+      "explanation": "It then reacts with H2O and another acetyl CoA to form HMG-CoA."
     }
   ],
   "medium": [
     {
-      "tag": "IMPORTANCE",
-      "term": "Why are secondary metabolites important pharmaceutically despite being produced in small quantities?",
-      "answer": "They play specific roles in plants and are responsible for many pharmaceutical and medicinal uses."
+      "tag": "COMPARISON",
+      "term": "What is the difference between primary and secondary metabolites?",
+      "answer": "• Size: macromolecules (high MW) vs micro molecules (lower MW)<br>• Quantity: large vs small<br>• Role: essential for growth, development and reproduction vs specific role and medicinal uses<br>• Distribution: present in all plants vs unique to different species",
+      "explanation": "Primary metabolites keep the plant alive; secondary metabolites give the plant its pharmaceutical value."
+    },
+    {
+      "tag": "WHY?",
+      "term": "Why are phenylalanine, tyrosine and tryptophan essential nutrients in the animal diet?",
+      "answer": "Because the shikimic acid pathway is absent in animals, so they cannot synthesize these amino acids.",
+      "explanation": "The pathway exists only in plants, fungi and bacteria."
+    },
+    {
+      "tag": "WHY?",
+      "term": "Why is the shikimic acid pathway important for medicinal compounds?",
+      "answer": "• Most medicinally active secondary metabolites are aromatic<br>• It produces the aromatic amino acids that are precursors of many medicinal compounds<br>• It is the precursor of tannins, flavonoids, coumarins and others",
+      "explanation": "Linking aromatic compounds to their pathway explains why this pathway matters pharmaceutically."
+    },
+    {
+      "tag": "PROCESS",
+      "term": "In what two ways is prephenic acid aromatized?",
+      "answer": "• Dehydration and decarboxylation → phenylpyruvic acid (direct precursor of phenylalanine)<br>• Dehydrogenation and decarboxylation → p-hydroxyphenylpyruvic acid (precursor of tyrosine)",
+      "explanation": "Reductive amination then converts the keto acids into the amino acids."
+    },
+    {
+      "tag": "PROCESS",
+      "term": "What are the two branches that follow chorismic acid?",
+      "answer": "• Anthranilic acid → tryptophan<br>• Prephenic acid → phenylalanine and tyrosine",
+      "explanation": "The tryptophan branch involves phosphoribosyl pyrophosphate and serine."
+    },
+    {
+      "tag": "SEQUENCE",
+      "term": "What is the order of the main steps of the shikimic acid pathway?",
+      "answer": "• Phospho-enol-pyruvic acid + erythrose 4-phosphate<br>• → 2-keto-3-deoxy-7-phospho-D-glucoheptonic acid<br>• → 3-dehydroquinic acid → 3-dehydroshikimic acid<br>• → shikimic acid → shikimic acid-3-phosphate<br>• → chorismic acid → prephenic acid",
+      "explanation": "Phospho-enol-pyruvic acid reacts again with shikimic acid-3-phosphate (−H2O) to give chorismic acid."
+    },
+    {
+      "tag": "SEQUENCE",
+      "term": "Order the early steps of the acetate-mevalonate pathway.",
+      "answer": "Acetyl CoA → aceto-acetyl CoA → HMG-CoA → mevalonic acid (reduction) → phosphorylation → decarboxylation → IPP.",
+      "explanation": "The pathway ends with IPP and its isomer dimethylallyl pyrophosphate."
     },
     {
       "tag": "RELATIONSHIP",
-      "term": "What is the relationship between primary and secondary metabolites in biosynthesis?",
-      "answer": "Biosynthesis of secondary active compounds usually starts with primary metabolites."
+      "term": "How are IPP and dimethylallyl pyrophosphate (DMAPP) related, and why is DMAPP important?",
+      "answer": "They are interconvertible; DMAPP (C5) has a good leaving group (pyrophosphate) and is very reactive toward nucleophilic substitution.",
+      "explanation": "This reactivity lets IPP units keep substituting the pyrophosphate group to build larger terpenoids."
     },
     {
-      "tag": "SIGNIFICANCE",
-      "term": "Why does the shikimic acid pathway have major importance in pharmacognosy?",
-      "answer": "Most medicinally active secondary metabolites are aromatic, and the pathway produces aromatic amino acids that serve as precursors for many medicinal compounds."
+      "tag": "PROCESS",
+      "term": "How are the C10, C15, C20 and C30 terpenoid precursors built?",
+      "answer": "• IPP + IPP → geranyl pyrophosphate (C10)<br>• GPP + IPP → farnesyl pyrophosphate (C15)<br>• FPP + IPP → geranylgeranyl pyrophosphate (C20)<br>• 2 FPP → squalene (C30)",
+      "explanation": "Each step adds a C5 unit, except squalene which joins two C15 units."
     },
     {
-      "tag": "RELATIONSHIP",
-      "term": "What is the relationship between the shikimic acid pathway and tannins, flavonoids, and coumarins?",
-      "answer": "The pathway is a biosynthetic precursor pathway for these aromatic secondary compounds."
+      "tag": "PROCESS",
+      "term": "How does squalene lead to steroids?",
+      "answer": "By oxidation and cyclization it gives cyclo-penta-phenanthrene, the basic skeleton of cholesterol and other steroids/triterpenoids.",
+      "explanation": "Squalene is the direct precursor of steroids."
     },
     {
-      "tag": "PRECURSORS",
-      "term": "What are the carbohydrate sources entering the shikimic acid pathway?",
-      "answer": "Simple carbohydrates derived from glycolysis and the pentose phosphate pathway."
+      "tag": "MECHANISM",
+      "term": "How do antilipidemic drugs (statins) inhibit cholesterol formation?",
+      "answer": "They inhibit HMG-CoA reductase, blocking conversion of HMG-CoA to mevalonate.",
+      "explanation": "The pathway then cannot proceed to isopentenyl-PP, geranyl-PP, farnesyl-PP, squalene and cholesterol."
     },
     {
-      "tag": "KEY INTERMEDIATE",
-      "term": "What happens to the shikimic acid pathway after the phosphorylated intermediates?",
-      "answer": "They produce chorismic acid, the most important intermediate."
+      "tag": "CLASSIFICATION",
+      "term": "Match each terpene class with its isoprene units.",
+      "answer": "• Monoterpenes: 2 isoprene (C10)<br>• Sesquiterpenes: 3 isoprene (C15)<br>• Diterpenes: 4 isoprene (C20)<br>• Squalene: C30, steroids and triterpenes",
+      "explanation": "Each isoprene unit is a C5 unit."
     },
     {
-      "tag": "BRANCHES",
-      "term": "What are the two major products/branches arising after chorismic acid?",
-      "answer": "One branch proceeds through anthranilic acid to tryptophan; the other proceeds to prephenic acid."
+      "tag": "MATCHING",
+      "term": "Match each product group with its pathway.",
+      "answer": "• Shikimic acid pathway: aromatic amino acids, tannins, flavonoids, coumarins<br>• Acetate-mevalonate pathway: terpenoids and steroids",
+      "explanation": "Aromatic = shikimic acid pathway; aliphatic = acetate-mevalonate pathway."
     },
     {
-      "tag": "PREPHENIC ACID",
-      "term": "Why is prephenic acid described as a significant point in the pathway?",
-      "answer": "It is the last nonaromatic compound in the sequence before formation of aromatic products."
+      "tag": "SCHEME",
+      "term": "In the final scheme, what products arise from each pathway?",
+      "answer": "• Shikimic acid pathway → flavonoids, volatile oils, aromatic amino acids → alkaloids<br>• Isoprenoid/acetate pathway → terpenoids, steroids, volatile oils<br>• Aliphatic amino acids → alkaloids",
+      "explanation": "Both routes start from carbohydrates made by photosynthesis (CO2 + H2O + sunlight)."
     },
     {
-      "tag": "PREPHENIC ACID",
-      "term": "What are the two products obtained from the two aromatization routes of prephenic acid?",
-      "answer": "Phenylpyruvic acid and p-hydroxyphenylpyruvic acid."
-    },
-    {
-      "tag": "AMINO ACIDS",
-      "term": "Which amino acid is associated with phenylpyruvic acid in the lecture?",
-      "answer": "Phenylalanine."
-    },
-    {
-      "tag": "AMINO ACIDS",
-      "term": "Which amino acid is associated with p-hydroxyphenylpyruvic acid?",
-      "answer": "Tyrosine."
-    },
-    {
-      "tag": "FUNCTION",
-      "term": "What is the function of the acetate–mevalonate pathway in natural-product biosynthesis?",
-      "answer": "It biosynthesizes aliphatic active compounds, especially terpenoids and steroids."
-    },
-    {
-      "tag": "INTERMEDIATE",
-      "term": "What is HMG-CoA in the sequence?",
-      "answer": "[(3S)-3-Hydroxy-3-methylglutaryl CoA], an intermediate formed from aceto-acetyl-CoA with another acetyl-CoA and H₂O."
-    },
-    {
-      "tag": "ISOPRENE UNITS",
-      "term": "What two C5 compounds result after phosphorylation and decarboxylation of mevalonic acid?",
-      "answer": "Isopentenyl pyrophosphate (IPP) and its isomer dimethylallyl pyrophosphate (DMAP)."
-    },
-    {
-      "tag": "CARBON COUNT",
-      "term": "What is the carbon progression from IPP to squalene?",
-      "answer": "C5 IPP units form C10 geranyl pyrophosphate, then C15 farnesyl pyrophosphate, and two C15 units form C30 squalene."
+      "tag": "NOTE",
+      "term": "What does the lecture note say about the mixed pathway?",
+      "answer": "A mixed pathway is derived from the shikimate and mevalonate pathways.",
+      "explanation": "Some metabolites combine both aromatic and aliphatic origins."
     }
   ],
   "hard": [
     {
-      "tag": "IDENTIFY",
-      "term": "A pathway begins with carbohydrates and ultimately provides aromatic amino acids and aromatic active compounds. What pathway is being described, and what are its main starting carbohydrate sources?",
-      "answer": "The shikimic acid pathway; its simple carbohydrate starting materials are derived from glycolysis and the pentose phosphate pathway."
+      "tag": "ANALYSIS",
+      "term": "What would happen to secondary metabolites if a plant could not run the shikimic acid pathway?",
+      "answer": "• It could not make phenylalanine, tyrosine or tryptophan<br>• Tannins, flavonoids, coumarins and other aromatic compounds would be affected",
+      "explanation": "The pathway is the biosynthetic precursor of aromatic amino acids and these compound classes."
     },
     {
-      "tag": "NUTRITION",
-      "term": "Why does the absence of the shikimic acid pathway in animals have nutritional significance according to the lecture?",
-      "answer": "Animals cannot synthesize phenylalanine, tyrosine, and tryptophan through this pathway, so these three aromatic amino acids are essential nutrients in the animal diet."
+      "tag": "DISTINGUISH",
+      "term": "How do the phenylalanine and tyrosine routes from prephenic acid differ?",
+      "answer": "• Phenylalanine: dehydration + decarboxylation → phenylpyruvic acid → reductive amination<br>• Tyrosine: dehydrogenation + decarboxylation → p-hydroxyphenylpyruvic acid → reductive amination",
+      "explanation": "The tyrosine route yields a ring bearing an OH group."
     },
     {
-      "tag": "BRANCHES",
-      "term": "Trace the two major branches after chorismic acid.",
-      "answer": "One branch goes chorismic acid → anthranilic acid → tryptophan. The other goes chorismic acid → prephenic acid, which can then be aromatized toward phenylalanine or tyrosine."
+      "tag": "SCENARIO",
+      "term": "The conversion of chorismic acid to prephenic acid is blocked. Which aromatic amino acid can still form?",
+      "answer": "Tryptophan, via anthranilic acid.",
+      "explanation": "Phenylalanine and tyrosine require prephenic acid; tryptophan uses the separate anthranilic acid branch."
     },
     {
-      "tag": "PREPHENIC ACID",
-      "term": "Why is prephenic acid a key transition point in the shikimic pathway?",
-      "answer": "It is the last nonaromatic compound in the sequence and can be converted through two different aromatization routes toward phenylalanine or tyrosine."
+      "tag": "SCENARIO",
+      "term": "A drug inhibits HMG-CoA reductase. Which compounds are reduced?",
+      "answer": "Mevalonate and everything downstream: IPP, geranyl-PP, farnesyl-PP, squalene and cholesterol.",
+      "explanation": "HMG-CoA reductase catalyses the reduction of HMG-CoA to mevalonate."
+    },
+    {
+      "tag": "SCENARIO",
+      "term": "A C30 terpene is formed from two C15 molecules. Identify it and its fate.",
+      "answer": "Squalene, from two farnesyl pyrophosphate molecules; the direct precursor of steroids/triterpenoids.",
+      "explanation": "Six C5 units: IPP + IPP → C10, + IPP → C15, then two C15 joined."
+    },
+    {
+      "tag": "DISTINGUISH",
+      "term": "Distinguish IPP, DMAPP, GPP, FPP and GGPP.",
+      "answer": "• IPP: C5 isoprene unit<br>• DMAPP: C5 isomer with a good leaving group<br>• GPP: C10 (monoterpenes)<br>• FPP: C15 (sesquiterpenes)<br>• GGPP: C20 (diterpenes)",
+      "explanation": "Each step from GPP onward adds one IPP unit."
     },
     {
       "tag": "COMPARISON",
-      "term": "Compare the two reactions that aromatize prephenic acid and their products.",
-      "answer": "Dehydration + decarboxylation → phenylpyruvic acid → phenylalanine. Dehydrogenation + decarboxylation → p-hydroxyphenylpyruvic acid → tyrosine."
-    },
-    {
-      "tag": "SYNTHESIS",
-      "term": "Trace the acetate–mevalonate pathway from acetyl-CoA to IPP.",
-      "answer": "Acetyl-CoA combines to form aceto-acetyl-CoA; with another acetyl-CoA and H₂O, this forms HMG-CoA; HMG-CoA is reduced to mevalonic acid, which is phosphorylated and then decarboxylated to form IPP and its isomer DMAP."
-    },
-    {
-      "tag": "SIGNIFICANCE",
-      "term": "Why are IPP and DMAP important in the acetate–mevalonate pathway?",
-      "answer": "They are the basic C5 isoprene units/precursors used in the formation of terpenoids and subsequently related compounds."
-    },
-    {
-      "tag": "CARBON COUNT",
-      "term": "Trace the carbon-number progression from IPP to squalene.",
-      "answer": "C5 IPP + C5 IPP → C10 geranyl pyrophosphate; C10 GPP + C5 IPP → C15 farnesyl pyrophosphate; C15 FPP + C15 FPP → C30 squalene."
-    },
-    {
-      "tag": "SYNTHESIS",
-      "term": "How does farnesyl pyrophosphate participate in the formation of both different terpene classes and steroids?",
-      "answer": "FPP C15 + IPP C5 → C20 geranylgeranyl pyrophosphate → diterpenes, while 2 FPP C15 → C30 squalene, which is the direct precursor of steroids after oxidation and cyclization."
+      "term": "Compare the shikimic acid pathway with the acetate-mevalonate pathway.",
+      "answer": "• Shikimic: aromatic compounds; starts from PEP (glycolysis) + erythrose 4-phosphate (pentose phosphate pathway); ends with aromatic amino acids<br>• Acetate-mevalonate: aliphatic compounds; starts from acetyl CoA; forms isoprene units for terpenoids and steroids",
+      "explanation": "Only the shikimic acid pathway is absent in animals."
     },
     {
       "tag": "INTEGRATION",
-      "term": "Give an integrated comparison of the two major biosynthetic pathways in the lecture, including their starting materials and major product classes.",
-      "answer": "The shikimic acid pathway begins from simple carbohydrates derived from glycolysis and the pentose phosphate pathway and leads through chorismic acid to aromatic amino acids and aromatic secondary metabolites. The acetate–mevalonate/isoprenoid pathway proceeds from acetyl-CoA through HMG-CoA and mevalonic acid to C5 isoprene units, which form terpenoids and steroids."
+      "term": "From what sources can alkaloids arise according to the final scheme?",
+      "answer": "From aromatic amino acids (shikimic acid pathway) and from aliphatic amino acids.",
+      "explanation": "The scheme shows two arrows leading to alkaloids."
+    },
+    {
+      "tag": "WHY?",
+      "term": "Why can terpenoid chain growth continue as IPP 'keeps substituting the pp group'?",
+      "answer": "Because each product keeps a pyrophosphate group, a good leaving group that another IPP can displace.",
+      "explanation": "This is the same reactivity described for dimethylallyl pyrophosphate."
+    },
+    {
+      "tag": "INTEGRATION",
+      "term": "Trace hydroxychloroquine (aromatic) versus coniine (aliphatic) to their pathways.",
+      "answer": "• Hydroxychloroquine: carbohydrates → PEP + erythrose 4-phosphate → shikimic acid pathway<br>• Coniine: carbohydrates → glycolysis → acetyl CoA → acetate-mevalonate pathway",
+      "explanation": "Aromatic = shikimic acid pathway; aliphatic = acetate-mevalonate pathway."
     }
   ]
 };
@@ -1100,7 +1671,7 @@ function renderFlashcards(order){
   order.forEach(card=>{
     const wrap = document.createElement('div');
     wrap.className='fc-card';
-    const isDense = (card.term.length + card.answer.length) > 190;
+    const isDense = (card.term.length + card.answer.length + card.explanation.length) > 260;
     if(isDense) wrap.classList.add('fc-dense');
     wrap.innerHTML = `
       <div class="fc-inner">
@@ -1112,6 +1683,7 @@ function renderFlashcards(order){
         <div class="fc-face fc-back">
           <div class="fc-tag">ANSWER</div>
           <div class="fc-answer">${card.answer}</div>
+          <div class="fc-expl"><b>Explanation:</b> ${card.explanation}</div>
           <div class="fc-flip-hint">Click to flip back</div>
         </div>
       </div>`;
@@ -1135,513 +1707,613 @@ document.querySelectorAll('#fcLevelTabs .level-btn').forEach(btn=>{
 });
 
 /* ============================================================
-   QUIZ BANK  (50 total: 25 easy / 15 medium / 10 hard, shuffled options)
+   QUIZ BANK  (50 total: 25 easy / 15 medium / 10 hard, fixed option order with explanations)
 ============================================================ */
 const quizData = {
   "easy": [
     {
-      "q": "Which of the following is classified as a primary metabolite?",
+      "q": "Which of the following is an example of a primary metabolite according to the lecture?",
       "options": [
-        "Alkaloid",
-        "Protein",
-        "Pigment",
-        "Drug"
+        "Antibiotics",
+        "Nucleotides",
+        "Pigments",
+        "Medicinal compounds"
       ],
-      "correct": 1
+      "correct": 1,
+      "explanation": "The lecture lists proteins, polysaccharides, nucleotides and vitamins as primary metabolites; antibiotics, drugs, pigments and medicinal compounds are secondary metabolites.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Primary metabolites are generally produced in:",
+      "q": "Secondary metabolites differ from primary metabolites in their distribution because they are:",
       "options": [
-        "Small quantities",
-        "Large quantities",
-        "Only specific tissues",
-        "No measurable quantities"
+        "Present in all plants in the same form",
+        "Identical in every plant species",
+        "Restricted to the reproductive organs only",
+        "Unique to different plant species"
       ],
-      "correct": 1
+      "correct": 3,
+      "explanation": "Primary metabolites are present in all plants (same in all plants), whereas secondary metabolites are unique to different plant species.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Secondary metabolites are generally:",
+      "q": "Primary metabolites are directly involved in which plant processes?",
       "options": [
-        "High-molecular-weight macromolecules",
-        "Produced in large quantities",
-        "Lower-molecular-weight molecules",
-        "Essential for basic plant growth"
+        "Growth, development and reproduction",
+        "Only pharmaceutical uses",
+        "Pigment and antibiotic production",
+        "Species-specific medicinal action"
       ],
-      "correct": 2
+      "correct": 0,
+      "explanation": "Primary metabolites are essential for the plant and directly involved in growth, development and reproduction.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Which of the following is a secondary metabolite?",
+      "q": "The name of the shikimic acid pathway comes from:",
       "options": [
-        "Protein",
-        "Polysaccharide",
-        "Nucleotide",
-        "Caffeine"
+        "A Greek physician",
+        "An Indian medicinal tree",
+        "A Japanese flower called Shikimi",
+        "A European mineral spring"
       ],
-      "correct": 3
+      "correct": 2,
+      "explanation": "The pathway is named after the Japanese flower Shikimi, where shikimic acid was first isolated.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Primary metabolites are directly involved in:",
+      "q": "In which year was shikimic acid first isolated?",
       "options": [
-        "Drug formation only",
-        "Growth, development, and reproduction",
-        "Pigment formation only",
-        "Terpenoid formation only"
+        "1858",
+        "1885",
+        "1895",
+        "1905"
       ],
-      "correct": 1
+      "correct": 1,
+      "explanation": "The lecture states that shikimic acid was first isolated from the Japanese flower Shikimi in 1885.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Secondary metabolites are responsible for many of the plant’s:",
+      "q": "Which set contains the three aromatic amino acids produced by the shikimic acid pathway?",
       "options": [
-        "Basic nutritional processes",
-        "Pharmaceutical and medicinal uses",
-        "Photosynthetic reactions only",
-        "Reproductive structures only"
+        "Phenylalanine, tyrosine and tryptophan",
+        "Phenylalanine, tyrosine and serine",
+        "Tryptophan, serine and chorismic acid",
+        "Tyrosine, anthranilic acid and phenylalanine"
       ],
-      "correct": 1
+      "correct": 0,
+      "explanation": "The shikimic acid pathway produces the critical aromatic amino acids phenylalanine, tyrosine and tryptophan.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Secondary metabolites are generally:",
-      "options": [
-        "The same in all plants",
-        "Unique to different plant species",
-        "Present only in animals",
-        "Present only in bacteria"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "Which group consists of secondary metabolites listed in the lecture?",
-      "options": [
-        "Proteins, vitamins, nucleotides",
-        "Alkaloids, flavonoids, glycosides",
-        "Proteins, polysaccharides, vitamins",
-        "Nucleotides, proteins, drugs"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "Which of the following is an example of a secondary metabolite mentioned in the lecture?",
-      "options": [
-        "Digoxin",
-        "Protein",
-        "Nucleotide",
-        "Polysaccharide"
-      ],
-      "correct": 0
-    },
-    {
-      "q": "Secondary metabolites can be classified as:",
-      "options": [
-        "Acidic or basic only",
-        "Aromatic or aliphatic",
-        "Proteins or carbohydrates",
-        "Vitamins or minerals"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "Which pathway is associated with aromatic secondary metabolites?",
-      "options": [
-        "Acetate–mevalonate pathway",
-        "Shikimic acid pathway",
-        "Glycolysis only",
-        "Pentose phosphate pathway only"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "The acetate–mevalonate pathway is associated mainly with:",
-      "options": [
-        "Aromatic amino acids",
-        "Aliphatic active compounds",
-        "Proteins",
-        "Polysaccharides"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "The shikimic acid pathway produces the aromatic amino acids:",
-      "options": [
-        "Alanine, glycine, valine",
-        "Phenylalanine, tyrosine, tryptophan",
-        "Lysine, arginine, histidine",
-        "Serine, threonine, cysteine"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "The shikimic acid pathway is present in:",
-      "options": [
-        "Animals only",
-        "Plants, fungi, and bacteria",
-        "Animals and plants only",
-        "Animals, fungi, and bacteria"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "The shikimic acid pathway is absent in:",
+      "q": "Which group of organisms lacks the shikimic acid pathway?",
       "options": [
         "Plants",
         "Fungi",
         "Bacteria",
         "Animals"
       ],
-      "correct": 3
+      "correct": 3,
+      "explanation": "The pathway is present in plants, fungi and bacteria but absent in animals.",
+      "difficulty": "Easy"
     },
     {
-      "q": "The starting materials of the shikimic acid pathway are simple carbohydrates derived from:",
+      "q": "Erythrose 4-phosphate, one of the starting compounds of the shikimic acid pathway, comes from the:",
       "options": [
-        "Protein synthesis",
-        "Glycolysis and the pentose phosphate pathway",
-        "The acetate pathway only",
-        "Steroid metabolism"
+        "Glycolysis",
+        "Acetate-mevalonate pathway",
+        "Pentose phosphate pathway",
+        "Isoprenoid pathway"
       ],
-      "correct": 1
+      "correct": 2,
+      "explanation": "Phospho-enol-pyruvic acid comes from glycolysis, while erythrose 4-phosphate comes from the pentose phosphate pathway.",
+      "difficulty": "Easy"
     },
     {
-      "q": "The most important intermediate of the shikimic acid pathway mentioned in the lecture is:",
+      "q": "Which compound is considered the most important intermediate of the shikimic acid pathway?",
       "options": [
-        "Mevalonic acid",
         "Chorismic acid",
-        "Acetyl-CoA",
-        "Squalene"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "One branch from chorismic acid leads to:",
-      "options": [
-        "Anthranilic acid and then tryptophan",
-        "Mevalonic acid",
-        "Squalene",
-        "Acetyl-CoA"
-      ],
-      "correct": 0
-    },
-    {
-      "q": "The other branch from chorismic acid leads to:",
-      "options": [
-        "Acetic acid",
         "Prephenic acid",
-        "Squalene",
-        "DMAP"
+        "Anthranilic acid",
+        "Shikimic acid-3-phosphate"
       ],
-      "correct": 1
+      "correct": 0,
+      "explanation": "Shikimic acid passes through phosphorylated intermediates to give chorismic acid, described as the most important intermediate.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Prephenic acid is described as the last:",
+      "q": "Which compound is the last nonaromatic compound in the shikimic acid sequence?",
       "options": [
-        "Aromatic compound",
-        "Nonaromatic compound in the sequence",
-        "Primary metabolite",
-        "Isoprene unit"
+        "Chorismic acid",
+        "Prephenic acid",
+        "Phenylpyruvic acid",
+        "Anthranilic acid"
       ],
-      "correct": 1
+      "correct": 1,
+      "explanation": "Prephenic acid is the last nonaromatic compound; it is then aromatized to give phenylalanine and tyrosine precursors.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Acetyl-CoA is involved at the beginning of the:",
+      "q": "Aliphatic (nonaromatic) secondary metabolites are formed through the:",
       "options": [
         "Shikimic acid pathway",
-        "Acetate–mevalonate pathway",
         "Pentose phosphate pathway",
-        "Aromatic amino acid pathway only"
+        "Glycolysis pathway",
+        "Acetate-mevalonic acid pathway"
       ],
-      "correct": 1
+      "correct": 3,
+      "explanation": "Aliphatic active compounds arise from the acetate-mevalonic acid pathway, while aromatic ones arise from the shikimic acid pathway.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Mevalonic acid is subsequently:",
+      "q": "The acetate-mevalonate pathway forms the building blocks of which compounds?",
       "options": [
-        "Phosphorylated and then decarboxylated",
-        "Oxidized and then hydrated",
-        "Aminated and then shifted",
-        "Dehydrated only"
+        "Tannins and flavonoids",
+        "Proteins and vitamins",
+        "Terpenoids and steroids",
+        "Aromatic amino acids"
       ],
-      "correct": 0
+      "correct": 2,
+      "explanation": "The pathway forms isoprenoid units, the building blocks in terpenoid and steroid biosynthesis.",
+      "difficulty": "Easy"
     },
     {
-      "q": "The final products of the mevalonate pathway include:",
+      "q": "How many carbon atoms does isopentenyl pyrophosphate (IPP) contain?",
       "options": [
-        "Phenylalanine and tyrosine",
-        "IPP and its isomer DMAP",
-        "Chorismic and prephenic acids",
-        "Anthranilic acid and tryptophan"
+        "5",
+        "3",
+        "10",
+        "15"
       ],
-      "correct": 1
+      "correct": 0,
+      "explanation": "IPP is a 5C compound and represents the isoprene unit.",
+      "difficulty": "Easy"
     },
     {
-      "q": "IPP is a:",
+      "q": "Which compound forms when two acetyl CoA units combine in the acetate-mevalonate pathway?",
       "options": [
-        "C3 compound",
-        "C4 compound",
-        "C5 isoprene unit",
-        "C10 steroid"
+        "HMG-CoA",
+        "Mevalonic acid",
+        "Isopentenyl pyrophosphate",
+        "Aceto-acetyl CoA"
       ],
-      "correct": 2
+      "correct": 3,
+      "explanation": "Acetyl CoA combines with another acetyl CoA to form aceto-acetyl CoA, which later gives HMG-CoA.",
+      "difficulty": "Easy"
     },
     {
-      "q": "Two C15 farnesyl pyrophosphate molecules combine to form:",
+      "q": "Isopentenyl pyrophosphate (IPP) is interconvertible with:",
       "options": [
         "Geranyl pyrophosphate",
-        "Mevalonic acid",
-        "Squalene",
-        "IPP"
+        "Dimethylallyl pyrophosphate",
+        "Farnesyl pyrophosphate",
+        "Mevalonic acid"
       ],
-      "correct": 2
+      "correct": 1,
+      "explanation": "The lecture states that IPP is interconvertible with dimethylallyl pyrophosphate (DMAPP).",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Combining two IPP (C5) units gives which compound?",
+      "options": [
+        "Farnesyl pyrophosphate (C15)",
+        "Geranylgeranyl pyrophosphate (C20)",
+        "Geranyl pyrophosphate (C10)",
+        "Squalene (C30)"
+      ],
+      "correct": 2,
+      "explanation": "IPP C5 + IPP C5 gives geranyl pyrophosphate C10.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Geranyl pyrophosphate (C10) is the precursor of which terpene class?",
+      "options": [
+        "Sesquiterpenes",
+        "Monoterpenes",
+        "Diterpenes",
+        "Triterpenes"
+      ],
+      "correct": 1,
+      "explanation": "Geranyl pyrophosphate C10 corresponds to monoterpenes (2 isoprene units).",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Squalene contains how many carbon atoms?",
+      "options": [
+        "30",
+        "10",
+        "15",
+        "20"
+      ],
+      "correct": 0,
+      "explanation": "Squalene is a C30 terpene formed from two farnesyl pyrophosphate molecules.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Statins lower cholesterol formation by inhibiting:",
+      "options": [
+        "HMG-CoA synthase",
+        "Phosphorylation of shikimic acid",
+        "Prephenic acid formation",
+        "HMG-CoA reductase"
+      ],
+      "correct": 3,
+      "explanation": "The antilipidemic scheme shows statins inhibiting HMG-CoA reductase, the step from HMG-CoA to mevalonate.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Which drug listed in the lecture is an aliphatic secondary metabolite?",
+      "options": [
+        "Digoxin",
+        "Morphine",
+        "Hydroxychloroquine",
+        "Phenylalanine"
+      ],
+      "correct": 0,
+      "explanation": "The lecture classifies digoxin and coniine as aliphatic, and morphine and hydroxychloroquine as aromatic.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Which compound is the direct precursor of phenylalanine?",
+      "options": [
+        "p-Hydroxyphenylpyruvic acid",
+        "Anthranilic acid",
+        "Phenylpyruvic acid",
+        "Chorismic acid"
+      ],
+      "correct": 2,
+      "explanation": "Prephenic acid gives phenylpyruvic acid, the direct precursor of phenylalanine.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Which aromatic amino acid is formed through the anthranilic acid branch?",
+      "options": [
+        "Tyrosine",
+        "Phenylalanine",
+        "Serine",
+        "Tryptophan"
+      ],
+      "correct": 3,
+      "explanation": "One branch from chorismic acid leads to anthranilic acid and then to tryptophan.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Which of the following is listed as a class of secondary metabolites in the lecture?",
+      "options": [
+        "Proteins",
+        "Tannins",
+        "Polysaccharides",
+        "Nucleotides"
+      ],
+      "correct": 1,
+      "explanation": "The secondary metabolites listed are alkaloids, flavonoids, glycosides, saponins and tannins.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "Diterpenes are built from how many isoprene units?",
+      "options": [
+        "4",
+        "2",
+        "3",
+        "6"
+      ],
+      "correct": 0,
+      "explanation": "Geranylgeranyl pyrophosphate (C20) gives the diterpenes, which contain 4 isoprene units.",
+      "difficulty": "Easy"
+    },
+    {
+      "q": "How is 3-dehydroshikimic acid converted into shikimic acid?",
+      "options": [
+        "Cyclization and removal of the phosphate group",
+        "Dehydration",
+        "The keto group is replaced by an OH group (hydrogenation)",
+        "Amination and shifting"
+      ],
+      "correct": 2,
+      "explanation": "In this step the keto group of 3-dehydroshikimic acid is replaced by an OH group (hydrogenation).",
+      "difficulty": "Easy"
     }
   ],
   "medium": [
     {
-      "q": "A compound is described as a low-molecular-weight molecule produced in small quantities and unique to particular plant species. Which category best fits it?",
+      "q": "Which statement correctly contrasts primary and secondary metabolites?",
       "options": [
-        "Primary metabolite",
-        "Secondary metabolite",
-        "Polysaccharide",
-        "Protein"
+        "Primary metabolites are small molecules made in small amounts, while secondary ones are macromolecules",
+        "Secondary metabolites are essential for growth, whereas primary ones provide the medicinal effect",
+        "Primary metabolites are present in all plants, while secondary metabolites are unique to species",
+        "Both are made in large quantities and are the same in all species"
       ],
-      "correct": 1
+      "correct": 2,
+      "explanation": "Primary metabolites are high-molecular-weight, produced in large quantities and common to all plants; secondary metabolites are smaller, produced in small quantities and species-specific.",
+      "difficulty": "Medium"
     },
     {
-      "q": "Which sequence correctly represents the general direction of the shikimic acid pathway?",
+      "q": "Why are phenylalanine, tyrosine and tryptophan essential nutrients in the animal diet?",
       "options": [
-        "Simple carbohydrates → shikimic pathway → aromatic amino acids → aromatic active compounds",
-        "Acetyl-CoA → mevalonate → phenylalanine",
-        "Glucose → HMG-CoA → tryptophan",
-        "IPP → chorismic acid → steroids"
+        "Animals lack the shikimic acid pathway needed to synthesize them",
+        "Animals cannot use carbohydrates from glycolysis",
+        "Plants do not produce aromatic amino acids",
+        "They are produced only by the acetate-mevalonate pathway"
       ],
-      "correct": 0
+      "correct": 0,
+      "explanation": "The shikimic acid pathway is absent in animals, so animals cannot synthesize the three aromatic amino acids.",
+      "difficulty": "Medium"
     },
     {
-      "q": "Why is the shikimic acid pathway particularly important for medicinal compounds?",
-      "options": [
-        "It directly produces all steroids",
-        "It produces aromatic amino acids that serve as synthetic precursors for many medicinal compounds",
-        "It occurs only in animals",
-        "It produces only primary metabolites"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "If an organism cannot perform the shikimic acid pathway, which consequence follows according to the lecture?",
-      "options": [
-        "It cannot produce mevalonic acid",
-        "It cannot synthesize the three aromatic amino acids through this pathway",
-        "It cannot produce Acetyl-CoA",
-        "It cannot form IPP"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "Which pairing is correct?",
-      "options": [
-        "Chorismic acid → most important intermediate of mevalonate pathway",
-        "Mevalonic acid → most important intermediate of shikimic pathway",
-        "Chorismic acid → important intermediate of shikimic pathway",
-        "Squalene → intermediate producing tryptophan"
-      ],
-      "correct": 2
-    },
-    {
-      "q": "Which branch correctly connects chorismic acid to tryptophan?",
-      "options": [
-        "Chorismic acid → prephenic acid → tyrosine",
-        "Chorismic acid → anthranilic acid → tryptophan",
-        "Chorismic acid → phenylpyruvic acid → tryptophan",
-        "Chorismic acid → mevalonic acid → tryptophan"
-      ],
-      "correct": 1
-    },
-    {
-      "q": "Which transformation of prephenic acid produces the direct precursor of phenylalanine?",
-      "options": [
-        "Dehydrogenation only",
-        "Phosphorylation",
-        "Dehydration and decarboxylation",
-        "Reduction and phosphorylation"
-      ],
-      "correct": 2
-    },
-    {
-      "q": "Which transformation of prephenic acid leads toward tyrosine?",
+      "q": "The direct precursor of phenylalanine is obtained from prephenic acid by:",
       "options": [
         "Dehydrogenation and decarboxylation",
-        "Dehydration only",
-        "Phosphorylation and decarboxylation",
-        "Reduction and dehydration"
+        "Amination and shifting",
+        "Cyclization and removal of phosphate",
+        "Dehydration and decarboxylation"
       ],
-      "correct": 0
+      "correct": 3,
+      "explanation": "Dehydration and decarboxylation of prephenic acid gives phenylpyruvic acid, the direct precursor of phenylalanine.",
+      "difficulty": "Medium"
     },
     {
-      "q": "Which sequence correctly describes the early acetate–mevalonate pathway?",
+      "q": "The precursor of tyrosine, p-hydroxyphenylpyruvic acid, is obtained from prephenic acid by:",
       "options": [
-        "Acetyl-CoA → aceto-acetyl-CoA → HMG-CoA → mevalonic acid",
-        "Acetyl-CoA → chorismic acid → HMG-CoA",
-        "Glucose → phenylpyruvic acid → mevalonic acid",
-        "IPP → HMG-CoA → acetyl-CoA"
+        "Dehydration and decarboxylation",
+        "Dehydrogenation and decarboxylation",
+        "Amination and shifting",
+        "Hydrogenation of a keto group"
       ],
-      "correct": 0
+      "correct": 1,
+      "explanation": "Dehydrogenation and decarboxylation of prephenic acid gives p-hydroxyphenylpyruvic acid, the precursor of tyrosine.",
+      "difficulty": "Medium"
     },
     {
-      "q": "What happens to HMG-CoA in the acetate–mevalonate pathway?",
+      "q": "Which statement correctly describes the two branches that follow chorismic acid?",
       "options": [
-        "It is reduced to mevalonic acid",
-        "It is converted directly to squalene",
-        "It becomes chorismic acid",
-        "It becomes anthranilic acid"
+        "One leads to anthranilic acid then tryptophan; the other leads to prephenic acid",
+        "One leads to anthranilic acid then tyrosine; the other to prephenic acid",
+        "One leads to phenylpyruvic acid then tryptophan; the other to anthranilic acid",
+        "One leads to prephenic acid then squalene; the other to tryptophan"
       ],
-      "correct": 0
+      "correct": 0,
+      "explanation": "Chorismic acid branches to anthranilic acid (then tryptophan) and to prephenic acid (then phenylalanine and tyrosine).",
+      "difficulty": "Medium"
     },
     {
-      "q": "Which sequence correctly follows mevalonic acid?",
+      "q": "Which sequence correctly orders the central steps of the shikimic acid pathway?",
       "options": [
-        "Phosphorylation → decarboxylation → IPP",
-        "Dehydration → amination → tryptophan",
-        "Oxidation → cyclization → cholesterol",
-        "Decarboxylation → phosphorylation → phenylalanine"
+        "Shikimic acid → prephenic acid → chorismic acid → shikimic acid-3-phosphate",
+        "Chorismic acid → shikimic acid → prephenic acid → anthranilic acid",
+        "Shikimic acid → shikimic acid-3-phosphate → chorismic acid → prephenic acid",
+        "Prephenic acid → chorismic acid → shikimic acid-3-phosphate → shikimic acid"
       ],
-      "correct": 0
+      "correct": 2,
+      "explanation": "Shikimic acid is phosphorylated, gives chorismic acid through phosphorylated intermediates, and chorismic acid leads to prephenic acid.",
+      "difficulty": "Medium"
     },
     {
-      "q": "Two C5 IPP units combine to produce which compound?",
+      "q": "Which sequence correctly shows the early acetate-mevalonate pathway?",
       "options": [
-        "Farnesyl pyrophosphate C15",
-        "Geranyl pyrophosphate C10",
-        "Squalene C30",
-        "Geranylgeranyl pyrophosphate C20"
+        "Acetyl CoA → HMG-CoA → aceto-acetyl CoA → mevalonic acid → IPP",
+        "Acetyl CoA → aceto-acetyl CoA → HMG-CoA → mevalonic acid → IPP",
+        "Acetyl CoA → aceto-acetyl CoA → mevalonic acid → HMG-CoA → IPP",
+        "Aceto-acetyl CoA → acetyl CoA → HMG-CoA → IPP → mevalonic acid"
       ],
-      "correct": 1
+      "correct": 1,
+      "explanation": "Two acetyl CoA form aceto-acetyl CoA, then HMG-CoA, which is reduced to mevalonic acid, then phosphorylated and decarboxylated to IPP.",
+      "difficulty": "Medium"
     },
     {
-      "q": "What results when geranyl pyrophosphate C10 combines with IPP C5?",
+      "q": "Why is dimethylallyl pyrophosphate highly reactive toward nucleophilic substitution?",
       "options": [
-        "Farnesyl pyrophosphate C15",
-        "Squalene C30",
-        "Mevalonic acid",
-        "DMAP C5"
+        "It contains an aromatic ring",
+        "Its keto group is replaced by an OH group",
+        "It is the C30 precursor of steroids",
+        "It has a good leaving group, the pyrophosphate"
       ],
-      "correct": 0
+      "correct": 3,
+      "explanation": "DMAPP (C5) has a good leaving group (pyrophosphate) and is very reactive toward nucleophilic substitution at this position.",
+      "difficulty": "Medium"
     },
     {
-      "q": "Which combination produces squalene according to the lecture?",
+      "q": "What results when geranyl pyrophosphate (C10) combines with IPP (C5)?",
       "options": [
-        "Two IPP molecules",
-        "Two geranyl pyrophosphate molecules",
-        "Two farnesyl pyrophosphate molecules",
-        "Farnesyl pyrophosphate + DMAP"
+        "Farnesyl pyrophosphate (C15)",
+        "Squalene (C30)",
+        "Geranylgeranyl pyrophosphate (C20)",
+        "Dimethylallyl pyrophosphate (C5)"
       ],
-      "correct": 2
+      "correct": 0,
+      "explanation": "Geranyl pyrophosphate + IPP gives farnesyl pyrophosphate C15.",
+      "difficulty": "Medium"
     },
     {
-      "q": "Which statement correctly links squalene to steroids?",
+      "q": "Which combination gives squalene (C30)?",
       "options": [
-        "Squalene is the direct precursor of aromatic amino acids",
-        "Squalene is a C30 terpene and the direct precursor of steroids after oxidation and cyclization",
-        "Squalene is a C5 isoprene unit",
-        "Squalene is converted directly into tryptophan"
+        "Two geranyl pyrophosphate (C10) molecules",
+        "Farnesyl pyrophosphate (C15) plus IPP (C5)",
+        "Two farnesyl pyrophosphate (C15) molecules",
+        "Two geranylgeranyl pyrophosphate (C20) molecules"
       ],
-      "correct": 1
+      "correct": 2,
+      "explanation": "Two farnesyl pyrophosphate molecules (C15 + C15) react to give squalene, the direct precursor of steroids.",
+      "difficulty": "Medium"
+    },
+    {
+      "q": "Which pairing of metabolite class and pathway is consistent with the lecture?",
+      "options": [
+        "Steroids – shikimic acid pathway",
+        "Tannins – acetate-mevalonate pathway",
+        "Terpenoids – shikimic acid pathway",
+        "Flavonoids – shikimic acid pathway"
+      ],
+      "correct": 3,
+      "explanation": "The shikimic acid pathway is the precursor route for tannins, flavonoids and coumarins; terpenoids and steroids come from the acetate-mevalonate pathway.",
+      "difficulty": "Medium"
+    },
+    {
+      "q": "How do statins reduce cholesterol formation?",
+      "options": [
+        "By inhibiting HMG-CoA synthase, so HMG-CoA is not formed",
+        "By inhibiting HMG-CoA reductase, so mevalonate is not formed",
+        "By blocking the pentose phosphate pathway",
+        "By preventing squalene from reacting with FPP"
+      ],
+      "correct": 1,
+      "explanation": "Statins inhibit HMG-CoA reductase, blocking conversion of HMG-CoA to mevalonate and so the pathway toward cholesterol.",
+      "difficulty": "Medium"
+    },
+    {
+      "q": "Which pair correctly matches the drug to its structural class?",
+      "options": [
+        "Digoxin – aliphatic; hydroxychloroquine – aromatic",
+        "Digoxin – aromatic; morphine – aliphatic",
+        "Coniine – aromatic; morphine – aliphatic",
+        "Hydroxychloroquine – aliphatic; coniine – aromatic"
+      ],
+      "correct": 0,
+      "explanation": "Digoxin and coniine are shown as aliphatic; morphine and hydroxychloroquine as aromatic.",
+      "difficulty": "Medium"
+    },
+    {
+      "q": "Which compounds take part in forming tryptophan from anthranilic acid?",
+      "options": [
+        "Phenylpyruvic acid and serine",
+        "Phosphoribosyl pyrophosphate and acetyl CoA",
+        "Serine and farnesyl pyrophosphate",
+        "Phosphoribosyl pyrophosphate and serine"
+      ],
+      "correct": 3,
+      "explanation": "The tryptophan branch shows anthranilic acid reacting with phosphoribosyl pyrophosphate and serine.",
+      "difficulty": "Medium"
+    },
+    {
+      "q": "According to the lecture's note, a mixed-pathway metabolite is derived from:",
+      "options": [
+        "Only the shikimate pathway",
+        "Only the mevalonate pathway",
+        "Both the shikimate and mevalonate pathways",
+        "Glycolysis and the pentose phosphate pathway alone"
+      ],
+      "correct": 2,
+      "explanation": "The note states that a mixed pathway is derived from the shikimate and mevalonate pathways.",
+      "difficulty": "Medium"
     }
   ],
   "hard": [
     {
-      "q": "A student is given the following information: a pathway begins from simple carbohydrates, uses phosphorylated intermediates, produces chorismic acid, and then branches toward either anthranilic acid or prephenic acid. Which conclusion is most accurate?",
+      "q": "A researcher traces cholesterol back to its precursors. Which sequence is correct?",
       "options": [
-        "The pathway is the acetate–mevalonate pathway producing steroids",
-        "The pathway is the shikimic acid pathway producing precursors of aromatic amino acids",
-        "The pathway begins with HMG-CoA and produces IPP",
-        "The pathway is responsible only for aliphatic active compounds"
+        "Acetyl CoA → mevalonate → HMG-CoA → IPP → farnesyl-PP → geranyl-PP → squalene → cholesterol",
+        "Acetyl CoA → HMG-CoA → mevalonate → IPP → geranyl-PP → farnesyl-PP → squalene → cholesterol",
+        "Acetyl CoA → HMG-CoA → mevalonate → geranyl-PP → IPP → farnesyl-PP → squalene → cholesterol",
+        "Acetyl CoA → HMG-CoA → IPP → mevalonate → geranyl-PP → farnesyl-PP → squalene → cholesterol"
       ],
-      "correct": 1
+      "correct": 1,
+      "explanation": "The scheme shows acetyl-CoA, HMG-CoA, mevalonate, isopentenyl-PP, geranyl-PP, farnesyl-PP, squalene and finally cholesterol.",
+      "difficulty": "Hard"
     },
     {
-      "q": "If the pathway branch proceeds from chorismic acid through anthranilic acid, which final aromatic amino acid is expected according to the lecture?",
+      "q": "A drug blocks HMG-CoA reductase. Which set of compounds would be reduced downstream of the block?",
       "options": [
+        "Aceto-acetyl CoA and acetyl CoA",
+        "Shikimic acid, chorismic acid and prephenic acid",
+        "Mevalonate, IPP, farnesyl-PP and squalene",
+        "Erythrose 4-phosphate and phospho-enol-pyruvic acid"
+      ],
+      "correct": 2,
+      "explanation": "HMG-CoA reductase converts HMG-CoA to mevalonate, so everything after it (IPP, farnesyl-PP, squalene, cholesterol) is reduced.",
+      "difficulty": "Hard"
+    },
+    {
+      "q": "In a plant, the step forming prephenic acid from chorismic acid is blocked. Which product can still be formed from chorismic acid?",
+      "options": [
+        "Tryptophan",
         "Phenylalanine",
         "Tyrosine",
-        "Tryptophan",
-        "Alanine"
+        "Phenylpyruvic acid"
       ],
-      "correct": 2
+      "correct": 0,
+      "explanation": "Tryptophan arises from the separate anthranilic acid branch of chorismic acid, whereas phenylalanine and tyrosine require prephenic acid.",
+      "difficulty": "Hard"
     },
     {
-      "q": "A pathway intermediate undergoes dehydration and decarboxylation and produces phenylpyruvic acid. Based only on the lecture, which conclusion follows?",
+      "q": "Squalene (C30) forms from two C15 units. How many isoprene (C5) units does it represent, and what does it precede?",
       "options": [
-        "It is part of the route from prephenic acid toward phenylalanine",
-        "It is part of the route from HMG-CoA toward mevalonate",
-        "It produces tryptophan through anthranilic acid",
-        "It produces squalene"
+        "Four; diterpenes",
+        "Three; sesquiterpenes",
+        "Six; monoterpenes",
+        "Six; steroids and triterpenoids"
       ],
-      "correct": 0
+      "correct": 3,
+      "explanation": "C30 = six C5 isoprene units; squalene is the direct precursor of steroids/triterpenoids, while monoterpenes are C10 (2 units).",
+      "difficulty": "Hard"
     },
     {
-      "q": "Another pathway intermediate undergoes dehydrogenation and decarboxylation to produce p-hydroxyphenylpyruvic acid. What does this indicate?",
+      "q": "A metabolite arises from precursors supplied by both glycolysis and the pentose phosphate pathway. Which pathway and product type fit?",
       "options": [
-        "The pathway is forming tyrosine from prephenic acid",
-        "The pathway is forming tryptophan from anthranilic acid",
-        "The pathway is forming IPP from mevalonate",
-        "The pathway is forming squalene from FPP"
+        "Acetate-mevalonate pathway; terpenoids",
+        "Shikimic acid pathway; aromatic compounds",
+        "Shikimic acid pathway; steroids",
+        "Acetate-mevalonate pathway; aromatic amino acids"
       ],
-      "correct": 0
+      "correct": 1,
+      "explanation": "Phospho-enol-pyruvic acid (glycolysis) and erythrose 4-phosphate (pentose phosphate pathway) start the shikimic acid pathway, which gives aromatic compounds.",
+      "difficulty": "Hard"
     },
     {
-      "q": "Consider the following sequence: acetyl-CoA → aceto-acetyl-CoA → HMG-CoA → mevalonic acid → phosphorylated intermediate → decarboxylated product. Which compound represents the decarboxylated C5 isoprene unit?",
+      "q": "A C20 compound is formed from farnesyl pyrophosphate plus one more unit. Which description is correct?",
       "options": [
-        "HMG-CoA",
-        "Mevalonic acid",
-        "IPP",
-        "Squalene"
+        "IPP is added; geranylgeranyl-PP forms; diterpenes (4 isoprene units)",
+        "IPP is added; geranyl-PP forms; monoterpenes (2 isoprene units)",
+        "DMAPP is added; farnesyl-PP forms; sesquiterpenes (3 isoprene units)",
+        "IPP is added; squalene forms; triterpenes (6 isoprene units)"
       ],
-      "correct": 2
+      "correct": 0,
+      "explanation": "Farnesyl pyrophosphate C15 + IPP C5 gives C20 geranylgeranyl pyrophosphate, the diterpenes (4 isoprene units).",
+      "difficulty": "Hard"
     },
     {
-      "q": "Starting with one C5 IPP unit, repeated addition of C5 units produces C10, C15, and C20 compounds. Which sequence matches the lecture?",
+      "q": "A student claims animals can make tryptophan through anthranilic acid. Which lecture fact refutes this?",
       "options": [
-        "IPP → FPP → GPP → squalene",
-        "IPP → GPP → FPP → geranylgeranyl pyrophosphate",
-        "IPP → squalene → FPP → GPP",
-        "IPP → mevalonate → FPP → cholesterol"
+        "Anthranilic acid is produced only by the acetate-mevalonate pathway",
+        "Tryptophan is a nonaromatic compound",
+        "The shikimic acid pathway is absent in animals, so tryptophan must come from the diet",
+        "Serine is absent in animals"
       ],
-      "correct": 1
+      "correct": 2,
+      "explanation": "The anthranilic acid branch belongs to the shikimic acid pathway, which animals lack; hence the aromatic amino acids are essential dietary nutrients.",
+      "difficulty": "Hard"
     },
     {
-      "q": "A researcher identifies a C30 terpene produced from two C15 farnesyl pyrophosphate molecules. Based strictly on the lecture, what is this compound and what is its significance?",
+      "q": "Which statement about alkaloids agrees with the final biosynthetic scheme?",
       "options": [
-        "Geranyl pyrophosphate; precursor of monoterpenes",
-        "Squalene; direct precursor of steroids after oxidation and cyclization",
-        "IPP; basic precursor of terpenoids",
-        "Mevalonic acid; precursor of aromatic amino acids"
+        "They derive only from isoprene units of the mevalonate pathway",
+        "They derive from erythrose 4-phosphate only through steroids",
+        "They derive directly from squalene",
+        "They can derive from aromatic amino acids (shikimic route) or from aliphatic amino acids"
       ],
-      "correct": 1
+      "correct": 3,
+      "explanation": "The scheme shows alkaloids arising from aromatic amino acids (shikimic acid pathway) and from aliphatic amino acids (from acetyl CoA/pyruvic acid).",
+      "difficulty": "Hard"
     },
     {
-      "q": "Which comparison correctly distinguishes the two major pathways presented?",
+      "q": "During terpenoid chain elongation, 'IPP keeps substituting the pp group.' What explains why the chain can keep growing?",
       "options": [
-        "Shikimate → aromatic compounds; acetate–mevalonate → aliphatic compounds",
-        "Shikimate → steroids; acetate–mevalonate → aromatic amino acids",
-        "Both pathways produce only primary metabolites",
-        "Both pathways begin directly with squalene"
+        "Each product keeps a pyrophosphate, a good leaving group, that another IPP can displace",
+        "Each product loses its pyrophosphate permanently and stops reacting",
+        "Each IPP adds an aromatic ring to the chain",
+        "Squalene is converted back into IPP"
       ],
-      "correct": 0
+      "correct": 0,
+      "explanation": "The pyrophosphate is a good leaving group, so each product (GPP, FPP, GGPP) can be attacked by another IPP, extending the chain.",
+      "difficulty": "Hard"
     },
     {
-      "q": "The lecture states that IPP is interconvertible with DMAP and that DMAP has a good leaving group and is highly reactive toward nucleophilic substitution at that position. Which interpretation best follows?",
+      "q": "Which comparison correctly distinguishes the two major biosynthetic pathways?",
       "options": [
-        "The two C5 compounds are related isomeric forms involved in subsequent terpenoid formation",
-        "DMAP is a C30 steroid",
-        "IPP is an aromatic amino acid",
-        "DMAP is the final product of the shikimic pathway"
+        "Shikimic: aliphatic, starts from acetyl CoA; acetate-mevalonate: aromatic, ends with tryptophan",
+        "Shikimic: aromatic, starts from PEP and erythrose 4-phosphate; acetate-mevalonate: aliphatic, yields isoprene units",
+        "Shikimic: forms terpenoids and steroids; acetate-mevalonate: forms tannins and flavonoids",
+        "Shikimic: occurs in animals; acetate-mevalonate: absent in animals"
       ],
-      "correct": 0
-    },
-    {
-      "q": "Which complete sequence best integrates the lecture’s final biosynthetic scheme?",
-      "options": [
-        "Carbohydrates → glycolysis/pentose phosphate pathway → shikimic acid pathway → aromatic amino acids; while carbohydrates → glycolysis → pyruvic acid → acetyl-CoA → mevalonic acid/isoprene units → terpenoids/steroids",
-        "Proteins → IPP → shikimic acid → steroids",
-        "Acetyl-CoA → tryptophan → squalene → tannins",
-        "Squalene → chorismic acid → aromatic amino acids → IPP"
-      ],
-      "correct": 0
+      "correct": 1,
+      "explanation": "The shikimic acid pathway gives aromatic compounds from PEP and erythrose 4-phosphate; the acetate-mevalonate pathway gives aliphatic terpenoids and steroids via isoprene units.",
+      "difficulty": "Hard"
     }
   ]
 };
@@ -1669,32 +2341,24 @@ function renderQuiz(level){
   const list = document.getElementById('quizList');
   list.innerHTML='';
   answeredCount=0; correctCount=0; updateScore();
+  const letters = ['A','B','C','D'];
 
   bank.forEach((item,idx)=>{
-    const correctText = item.options[item.correct];
-    const shuffledOptions = shuffleArray(item.options);
-
     const qDiv = document.createElement('div');
     qDiv.className='q-item';
-    qDiv.innerHTML = `<div class="q-num">Question ${idx+1}</div><div class="q-text">${item.q}</div><div class="q-options"></div>`;
+    qDiv.innerHTML = `<div class="q-num">Question ${idx+1} · <span class="q-diff q-diff-${item.difficulty.toLowerCase()}">${item.difficulty}</span></div><div class="q-text">${item.q}</div><div class="q-options"></div><div class="q-expl"><b>Explanation:</b> ${item.explanation}</div>`;
     const optWrap = qDiv.querySelector('.q-options');
 
-    shuffledOptions.forEach((optText)=>{
+    item.options.forEach((optText,oi)=>{
       const label = document.createElement('label');
       label.className='q-opt';
-      label.innerHTML = `<input type="radio" name="q${idx}"> <span>${optText}</span>`;
+      label.innerHTML = `<input type="radio" name="q${idx}"> <span class="q-letter">${letters[oi]})</span> <span>${optText}</span>`;
       label.addEventListener('click',()=>{
         if(qDiv.classList.contains('answered')) return;
         qDiv.classList.add('answered');
-        const isCorrect = optText === correctText;
+        const isCorrect = oi === item.correct;
         label.classList.add(isCorrect ? 'correct' : 'incorrect');
-        if(!isCorrect){
-          [...optWrap.children].forEach(child=>{
-            if(child.querySelector('span').textContent === correctText){
-              child.classList.add('correct');
-            }
-          });
-        }
+        if(!isCorrect){ optWrap.children[item.correct].classList.add('correct'); }
         [...optWrap.children].forEach(c=>c.classList.add('locked'));
         answeredCount++;
         if(isCorrect) correctCount++;
